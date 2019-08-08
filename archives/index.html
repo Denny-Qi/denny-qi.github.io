@@ -57,12 +57,12 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="DennyQi">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta property="og:url" content="http://denny-qi.github.io/archives/index.html">
 <meta property="og:site_name" content="DennyQi">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DennyQi">
-  <link rel="canonical" href="http://yoursite.com/archives/">
+  <link rel="canonical" href="http://denny-qi.github.io/archives/">
 
 
 <script id="page-configurations">
@@ -221,7 +221,7 @@
         
           
         
-        Um..! 1 post. Keep on posting.
+        Um..! 3 posts in total. Keep on posting.
       </span>
       
 
@@ -244,9 +244,75 @@
 
       <h2 class="post-title">
         
+          <a class="post-title-link" href="/2019/08/07/学习笔记/数论函数2/" itemprop="url">
+            
+              <span itemprop="name">数论函数</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2019-08-07T22:29:33+08:00"
+              content="2019-08-07">
+          08-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+  
+  
+  
+
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
           <a class="post-title-link" href="/2019/08/07/hello-world/" itemprop="url">
             
               <span itemprop="name">QixingZhi</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2019-08-07T08:01:00+08:00"
+              content="2019-08-07">
+          08-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+  
+  
+  
+
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2019/08/07/Test/" itemprop="url">
+            
+              <span itemprop="name">Test</span>
             
           </a>
         
@@ -298,7 +364,7 @@
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image"
-      src="/dilute.xyz/images/avatar.jpg"
+      src="https://files-cdn.cnblogs.com/files/qixingzhi/head_protrait.gif"
       alt="DennyQi">
   <p class="site-author-name" itemprop="name">DennyQi</p>
   <div class="site-description motion-element" itemprop="description"></div>
@@ -308,25 +374,25 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
     
-  </nav>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
       
       
+      <div class="site-state-item site-state-categories">
         
-      
-      
         
-      
-        <a href="https://github.com/DennyQi" title="GitHub &rarr; https://github.com/DennyQi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
+        
+      </div>
     
-  </div>
+  </nav>
   <div class="cc-license motion-element" itemprop="license">
     
   
@@ -427,6 +493,57 @@
 
 
 
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function() {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   

@@ -58,7 +58,7 @@
   <meta name="description" content="Hello World!">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QixingZhi">
-<meta property="og:url" content="http://yoursite.com/2019/08/07/hello-world/index.html">
+<meta property="og:url" content="http://denny-qi.github.io/2019/08/07/hello-world/index.html">
 <meta property="og:site_name" content="DennyQi">
 <meta property="og:description" content="Hello World!">
 <meta property="og:locale" content="default">
@@ -66,7 +66,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QixingZhi">
 <meta name="twitter:description" content="Hello World!">
-  <link rel="canonical" href="http://yoursite.com/2019/08/07/hello-world/">
+  <link rel="canonical" href="http://denny-qi.github.io/2019/08/07/hello-world/">
 
 
 <script id="page-configurations">
@@ -206,12 +206,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://denny-qi.github.io/2019/08/07/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DennyQi">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/dilute.xyz/images/avatar.jpg">
+      <meta itemprop="image" content="https://files-cdn.cnblogs.com/files/qixingzhi/head_protrait.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -258,13 +258,9 @@
       
         <p>Hello World!</p>
 <a id="more"></a>
-
-
-
 <p>I’m DennyQi!</p>
 <p>Hello Hexo!</p>
-<p>$$\sum\limits_{d|n} \mu (d)=[n=1]$$</p>
-
+<script type="math/tex; mode=display">\sum\limits_{d|n} \mu (d)=[n=1]</script>
     </div>
 
     
@@ -272,6 +268,23 @@
     
 
     <footer class="post-footer">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/08/07/Test/" rel="next" title="Test">
+                <i class="fa fa-chevron-left"></i> Test
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2019/08/07/学习笔记/数论函数2/" rel="prev" title="数论函数">
+                数论函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
     </footer>
   </div>
   
@@ -305,7 +318,7 @@
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image"
-      src="/dilute.xyz/images/avatar.jpg"
+      src="https://files-cdn.cnblogs.com/files/qixingzhi/head_protrait.gif"
       alt="DennyQi">
   <p class="site-author-name" itemprop="name">DennyQi</p>
   <div class="site-description motion-element" itemprop="description"></div>
@@ -315,25 +328,25 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
     
-  </nav>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
       
       
+      <div class="site-state-item site-state-categories">
         
-      
-      
         
-      
-        <a href="https://github.com/DennyQi" title="GitHub &rarr; https://github.com/DennyQi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
+        
+      </div>
     
-  </div>
+  </nav>
   <div class="cc-license motion-element" itemprop="license">
     
   
@@ -434,6 +447,57 @@
 
 
 
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function() {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
