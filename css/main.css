@@ -1609,7 +1609,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #b4f417;
+  background: #ffd586;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2205,7 +2205,7 @@ ul.breadcrumb li+li:last-child {
 .content-wrap {
   background: #fff;
   border-radius: initial;
-  box-shadow: initial;
+  box-shadow: 0 0 16px rgba(0,0,0,0.5);
   box-sizing: border-box;
   float: right;
   min-height: 700px;
@@ -2229,7 +2229,7 @@ ul.breadcrumb li+li:last-child {
 }
 .sidebar {
   background: #f5f7f9;
-  box-shadow: none;
+  box-shadow: 0 0 16px rgba(0,0,0,0.5);
   float: left;
   margin-left: -100%;
   position: static;
@@ -2265,6 +2265,20 @@ ul.breadcrumb li+li:last-child {
 .sidebar-position-right .footer-inner {
   padding-left: 0;
   padding-right: 260px;
+}
+body {
+  background: url("http://pic1.win4000.com/wallpaper/2/589adfb27f0e2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
+.main-inner {
+  background: #fff;
+  opacity: 0.7;
+}
+.header-inner {
+  opacity: 0.7;
 }
 .site-brand-wrapper {
   position: relative;
