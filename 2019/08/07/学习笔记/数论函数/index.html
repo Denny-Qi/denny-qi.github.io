@@ -55,6 +55,19 @@
   };
 </script>
 
+<script>
+    (function(){
+        if(''){
+            if (prompt('Password?') !== ''){
+                alert('Wrong Answer!');
+                history.back();
+            }else{
+                alert('Accepted!');
+            }
+        }
+    })();
+</script>
+
   <meta name="description" content="定义域为正整数，值域为整数的函数称为数论函数。OI中常用的数论函数有$\mu$，$\varphi$等。">
 <meta name="keywords" content="数论">
 <meta property="og:type" content="article">
@@ -63,7 +76,7 @@
 <meta property="og:site_name" content="DennyQi">
 <meta property="og:description" content="定义域为正整数，值域为整数的函数称为数论函数。OI中常用的数论函数有$\mu$，$\varphi$等。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-08T15:09:32.361Z">
+<meta property="og:updated_time" content="2019-08-09T04:50:57.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数论函数">
 <meta name="twitter:description" content="定义域为正整数，值域为整数的函数称为数论函数。OI中常用的数论函数有$\mu$，$\varphi$等。">
@@ -239,6 +252,7 @@
         
 
         <div class="post-meta">
+            
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -260,7 +274,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-08 23:09:32" itemprop="dateModified" datetime="2019-08-08T23:09:32+08:00">2019-08-08</time>
+                <time title="Modified: 2019-08-09 12:50:57" itemprop="dateModified" datetime="2019-08-09T12:50:57+08:00">2019-08-09</time>
               </span>
             
           
@@ -319,11 +333,7 @@
 <h2 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h2><blockquote>
 <p>求$\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m }[gcd(i,j) = k], (n &lt; m ) $</p>
 </blockquote>
-<script type="math/tex; mode=display">
-\begin{align}
-  x^2 + y^2 &=  z^2 \\
-  x^3 + y^3 &<  z^3
-\end{align}</script><p>设<script type="math/tex">f(x)=\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m}[gcd(i,j) = x]</script></p>
+<p>设<script type="math/tex">f(x)=\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m}[gcd(i,j) = x]</script></p>
 <p>显然$f(k)$即为答案。</p>
 <p>构造<script type="math/tex">F(x)=\sum\limits_{x|d}f(d)</script></p>
 <p>有<script type="math/tex">F(x)=\sum\limits_{x|d}\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m}[gcd(i,j) = d]$$$$=\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m}[x|gcd(i,j)]</script></p>
@@ -367,6 +377,19 @@
         <div class="post-tags">
             <a href="/tags/数论/" rel="tag"><i class="fa fa-tag"></i>数论</a>
           
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2019/08/09/好题记录/" rel="prev" title="好题记录">
+                好题记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
         </div>
     </footer>
   </div>
@@ -420,7 +443,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -437,7 +460,9 @@
         
           
         
-        <span class="site-state-item-count">1</span>
+          
+        
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -454,7 +479,11 @@
         
           
         
-        <span class="site-state-item-count">1</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"b2t":true,"scrollpercent":true},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('Password?') !== ''){
+                alert('Wrong Answer!');
+                history.back();
+            }else{
+                alert('Accepted!');
+            }
+        }
+    })();
+</script>
+
+  <meta name="description" content="记录一下做过的好题吧~">
+<meta name="keywords" content="题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="好题记录">
+<meta property="og:url" content="http://denny-qi.github.io/2019/08/09/好题记录/index.html">
+<meta property="og:site_name" content="DennyQi">
+<meta property="og:description" content="记录一下做过的好题吧~">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-09T04:48:09.982Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="好题记录">
+<meta name="twitter:description" content="记录一下做过的好题吧~">
+  <link rel="canonical" href="http://denny-qi.github.io/2019/08/09/好题记录/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>好题记录 | DennyQi</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  <div class="container sidebar-position-right">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DennyQi</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://denny-qi.github.io/2019/08/09/好题记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DennyQi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://files-cdn.cnblogs.com/files/qixingzhi/head_protrait.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DennyQi">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">好题记录
+
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            
+        <i class="fa fa-thumb-tack"></i>
+        <span class="post-meta-divider">|</span>
+    
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-08-09 12:15:50 / Modified: 12:48:09" itemprop="dateCreated datePublished" datetime="2019-08-09T12:15:50+08:00">2019-08-09</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/好题记录/" itemprop="url" rel="index"><span itemprop="name">好题记录</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>记录一下做过的好题吧~</p>
+<a id="more"></a>
+<h2 id="Codeforces-1063-B-Labyrinth"><a href="#Codeforces-1063-B-Labyrinth" class="headerlink" title="Codeforces 1063 B. Labyrinth"></a>Codeforces 1063 B. Labyrinth</h2><blockquote>
+<p>【确定性】给出一个迷宫$(1 \leq n,m \leq 2000)$，求从起点到各个点，能够做到在左移动次数不超过$x$次，右移动次数不超过$y$次的情况下到达的点的个数。</p>
+</blockquote>
+<p>显然贪心地要求到达每个点时左右移动次数越少越好，但是两个关键字很难维护。而事实上，起点终点确定时，左移动次数确定时右移动次数一定确定。当终点在起点左侧时，最小化左移动次数即可；当终点在起点右侧时，依然最小化左移动次数即可。当然两者都最小化右移动次数也可以。这就告诉我们，我们只需要最小化其中一个就可以了。直接利用重复进队更新的bfs维护即可。</p>
+<p>反思：确定性。对于平面距离的理解。</p>
+<h2 id="Codeforces-1019-A-Elections"><a href="#Codeforces-1019-A-Elections" class="headerlink" title="Codeforces 1019 A. Elections"></a>Codeforces 1019 A. Elections</h2><blockquote>
+<p>【逆向思维】有$n$个人给$m$个党投票（$1 \leq n,m \leq 3000$）。第$i$个人给$p_i$党投票，可以花$c_i$贿赂让他改变投票对象（任意改变）。问最少花多少钱能让1党获胜。</p>
+</blockquote>
+<p>正向思考很难。考虑确定1党最后的得票之后就可以确定达成这样的状态最少花多少钱，因此枚举1党得票，贪心计算最少花费。复杂度$O(n^2)$。具体的，设枚举到1党得票为$k$，则对于所有$a_i \geq k$，需要削掉，选择花费最少的削。之后如果还凑不到，就选最便宜的人凑就行了。</p>
+<p>反思：正向难思考时选择逆向。</p>
+<h2 id="Codeforces-777-D-Cloud-of-Hashtags"><a href="#Codeforces-777-D-Cloud-of-Hashtags" class="headerlink" title="Codeforces 777 D. Cloud of Hashtags"></a>Codeforces 777 D. Cloud of Hashtags</h2><blockquote>
+<p>【从后往前做】给出$n$个字符串，在不改变字符串的顺序的情况下，允许任意删去每个字符串的一段后缀（可以删光），问总共最少删几个字符使所有字符串按字典序排列。</p>
+</blockquote>
+<p>考虑两个字符串的相对关系。要使得前一个字符串比后一个字符串字典序小，那么只需要从前往后扫到第一个不同的地方（或结尾）然后标记一下就好了。于是想到从前往后这样做。但这样会有问题，因为一旦后面的字典序变小，会影响前面的所有。正确的做法是<code>从后往前</code>这样做。</p>
+<p>反思：怎样的顺序来做要弄清楚</p>
+<h2 id="Codeforces-442-B-Andrey-and-Problem"><a href="#Codeforces-442-B-Andrey-and-Problem" class="headerlink" title="Codeforces 442 B. Andrey and Problem"></a>Codeforces 442 B. Andrey and Problem</h2><blockquote>
+<p>【推式子，贪心】有$n$个人，第$i$个人有$a_i$的概率同意，$1-a_i$的概率不同意。问怎么选择一些人，使得只有一人同意的概率最大。</p>
+</blockquote>
+<p>假设我们已经选择了一个集合$S$，则概率为$\sum\limits_{i \in S}[\dfrac{a_i}{1-a_i}\prod\limits_{j \in S}(1-a_j)]$。令$B=\prod\limits_{i \in S}(1-a_i)$，$S=\sum\limits_{i \in S}\dfrac{a_i}{1-a_i}$。则概率为$SB$。</p>
+<p>现在考虑加入一个$a_k$，那么考虑答案的变化量$\Delta=(S+\dfrac{a_k}{1-a_k}) \cdot B \cdot (1-a_k)-SB=B(1-S)a_k$。因此只要满足$S&lt;1$，那么选择$a_k$答案就会变大。</p>
+<p>那么接下来考虑怎么选择。如果我们贪心地来考虑，那么显然选择最大的$a_k$会最优，这样我们对$a_k$排序从大到小选择直到$S \geq 1$为止，复杂度$O(n \log n)$。</p>
+<p>为什么可以贪心，可以用反证法证明。</p>
+<p>反思：数学问题推式子是个很好的选择。思想：计算每一次加入的$\Delta$以得到总的答案。</p>
+<h2 id="Codeforces-1096-D-Easy-Problem"><a href="#Codeforces-1096-D-Easy-Problem" class="headerlink" title="Codeforces 1096 D. Easy Problem"></a>Codeforces 1096 D. Easy Problem</h2><blockquote>
+<p>【DP状态定义、决策的思维】给出一个字符串，删除第$i$个字符的代价为$a_i$。问最少花多少代价使得原串内不存在子序列<code>hard</code>（不是子串，也就是可以不连续）</p>
+</blockquote>
+<p>对于每一个新加进来的字符，如果不是<code>h</code>、<code>a</code>、<code>r</code>、<code>d</code>中的一个则可以不用管。如果加入的是<code>d</code>，那么我们要么直接破坏这个<code>d</code>，要么破坏前面使得前面不存在<code>har</code>。想让前面不存在<code>har</code>，就要在<code>r</code>加入时做类似的事。因此我们选择DP。令$dp_{i,j}$表示前$i$个位置，破坏掉长度为$j$的前缀（可以不连续）的最小代价。于是根据刚才的两种决策，有$dp_{i,j}=\min\{dp_{i-1,j-1},dp_{i-1,j}+a_i\}$。那么答案就是$\min\{dp_{n,j}\}$。</p>
+<p>反思：状态的定义与性质有关。这题还要再想想清楚</p>
+<h2 id="Luogu-P2336-喵星球上的点名"><a href="#Luogu-P2336-喵星球上的点名" class="headerlink" title="Luogu P2336 喵星球上的点名"></a>Luogu P2336 喵星球上的点名</h2><blockquote>
+<p>【工业题，后缀数组转化为区间问题，差分思想】有$n$个人，每人有两个字符串。给出$m$次询问，每次询问给出一个字符串，问这个字符串在多少个人的那两个字符串中的一个里出现过。询问结束后输出每个人被询问到的次数。</p>
+</blockquote>
+<p>首先将所有人和询问的字符串并在一起（中间要插字符）做SA。每一次询问就对应着后缀排序之后的一段区间，预处理出每一个后缀属于哪个人当做每个点的颜色，问题转化为区间颜色个数，与每个颜色被覆盖的次数。前者直接用莫队解决，后者考虑差分：每次覆盖到，就对答案加上剩余询问个数次贡献，每次离开，就对答案减去剩余询问个数次贡献。</p>
+<p>反思：后缀数组总与区间问题联系在一起</p>
+<h2 id="Codeforces-988-D-Points-and-Powers-of-Two"><a href="#Codeforces-988-D-Points-and-Powers-of-Two" class="headerlink" title="Codeforces 988 D. Points and Powers of Two"></a>Codeforces 988 D. Points and Powers of Two</h2><blockquote>
+<p>【结论题】给出一个数列，选取其中最大的一个子集，满足其中任意两个元素满足$|a_i-a_j|=2^d,(d \geq 0)$</p>
+</blockquote>
+<p>子集大小不可能超过3！因为对于大小为三的子集，他们一定是等距的，不然两端的两个距离不会是二次幂。因此用个<code>map</code>记录，然后枚举指数暴力判断即可。复杂度$O(n \log^2n)$</p>
+<p>反思：利用性质大致确定答案的数量级（可能值）</p>
+<h2 id="Codeforces-375-B-Maximum-Submatrix-2"><a href="#Codeforces-375-B-Maximum-Submatrix-2" class="headerlink" title="Codeforces 375 B. Maximum Submatrix 2"></a>Codeforces 375 B. Maximum Submatrix 2</h2><blockquote>
+<p>【由类似题获得思路；贪心】给出一个01矩阵（$1 \leq n,m \leq 5000$），可以任意交换行的顺序。求交换后可能的最大全1子矩形面积。</p>
+</blockquote>
+<p>我们知道静态的全1子矩形可以通过维护每个点向左延伸的最长1的个数，然后利用单调栈进行扩展求最值。那么我们不妨还是维护这个东西，然后对于每一列将这个值排个序求解。</p>
+<p>反思：既然全1子矩形的问题碰到过，是通过维护延伸求解的。那么这种题应该不会差太远。思路要往这上面靠。</p>
+<h2 id="Codeforces-2-B-The-least-round-way"><a href="#Codeforces-2-B-The-least-round-way" class="headerlink" title="Codeforces 2 B. The least round way"></a>Codeforces 2 B. The least round way</h2><blockquote>
+<p>【双价值的处理】给出一个$n \cdot n$的矩阵，从左上角走到右下角（向右或向下），经过的数字相乘。怎样走使得得到的结果结尾的0尽量少。</p>
+</blockquote>
+<p>首先处理出每个数的2因子与5因子个数。接着有个重要结论：结尾的0的最小个数，为最小2的路径与最小5路径中的较小值。这样就把双价值的问题转化为单价值的问题了。</p>
+<p>反思：双价值总是难以处理的。</p>
+<h2 id="Codeforces-463-D-Gargari-and-Permutations"><a href="#Codeforces-463-D-Gargari-and-Permutations" class="headerlink" title="Codeforces 463 D. Gargari and Permutations"></a>Codeforces 463 D. Gargari and Permutations</h2><blockquote>
+<p>【建图；问题特性】给出$k$个长度为$n$的<strong>排列</strong>（$1 \leq n \leq 1000,1 \leq k \leq 5$），求出LCS。</p>
+</blockquote>
+<p>枚举数对。预处理出每个数对在每个排列中是顺序的还是逆序的。如果对于所有排列某数对都是同一个序的，那么这个数对就是可以作为LCS的一部分的。找出所有这样的数对之后，得到一张$DAG$，求出最长链即可。</p>
+<p>反思：DP的本质是DAG。因此关键是要抓住这张DAG在这里是什么。</p>
+<h2 id="Codeforces-449-B-Jzzhu-and-Cities"><a href="#Codeforces-449-B-Jzzhu-and-Cities" class="headerlink" title="Codeforces 449 B. Jzzhu and Cities"></a>Codeforces 449 B. Jzzhu and Cities</h2><blockquote>
+<p>【建图；最短路的性质】给出一张带权的无向图。再给出$k$条长度$w_i$的$(1,r_i)$的路径。问这$k$条路径最多能删掉几条，使得删掉之后所有点到1的最短路不变。</p>
+</blockquote>
+<p>将这$k$条路径加入图中，跑$Dijkstra$。同时每个点统计一个最短路入度。然后依次这$k$条路径，如果长度大于相应的最短路那肯定删去。如果恰好等于，那么看最短路入度，大于1则可以删去。然后将最短路的入度减去1.</p>
+<p>反思：这其实是一个最短路树（最短路图）的问题。删边问最短路变化的问题一般都这样处理。</p>
+<h2 id="Codeforces-471-D-MUH-and-Cube-Walls"><a href="#Codeforces-471-D-MUH-and-Cube-Walls" class="headerlink" title="Codeforces 471 D. MUH and Cube Walls"></a>Codeforces 471 D. MUH and Cube Walls</h2><blockquote>
+<p>【字符串差分匹配】修改字符换匹配的定义：两个字符串的所有字符的差都相同。问匹配数。</p>
+</blockquote>
+<p>我们来分析一下这样匹配有什么特殊的性质，发现他们两两相邻的差是一样的。于是我们可以预处理出两个串的差分数组，然后直接去匹配差分数组就可以了。用KMP算法$O(n)$完成就可以了。</p>
+<p>反思：匹配的本质就是寻找相同的东西。在这里两个数组相同的东西就是差分。</p>
+<h2 id="Codeforces-1156-C-Match-Points"><a href="#Codeforces-1156-C-Match-Points" class="headerlink" title="Codeforces 1156 C. Match Points"></a>Codeforces 1156 C. Match Points</h2><blockquote>
+<p> 给出一个长度为$n$的序列$a$和一个数$z$，数对$1 \leq i &lt; j \leq n$称为一个匹配当且仅当$|a_i-a_j| \geq z$。序列中一个数只能匹配一次。问最多能有多少个匹配。</p>
+</blockquote>
+<p>想到了一个贪心，排序后从前往后匹配差值第一个大于等于$z$的。然而被叉了，对于一个右端点在另一个左端点左边的情况，交换一下更优。</p>
+<p>事实上可以二分答案，而贪心地验证是可以做到的。一定是去选择两端的依次匹配最优。</p>
+<p>反思：直接贪心不可行，也许应用到二分验证中是可行的。</p>
+<h2 id="Codeforces-274-B-Zero-Tree"><a href="#Codeforces-274-B-Zero-Tree" class="headerlink" title="Codeforces 274 B. Zero Tree"></a>Codeforces 274 B. Zero Tree</h2><blockquote>
+<p>给出一棵树$(n \leq 10^5)$，有点权$v_i$。每一次操作可以选择一个包含根节点的连通块，使连通块内所有点的权值+1或-1。问最少进行多少次操作才能使整棵树的所有点权都变为0。</p>
+</blockquote>
+<p>根据题意分析，要对一个点进行操作的话必须对它的所有祖先进行相同的操作。而既然这样，想让一个点的点权归零进行操作，那之前就必须已经完成所有其后代的归零操作（因为如果后代没有归零，以后再去操作后代就必定会影响祖先使得决策不优）。而这样就将问题分解为子树上的子问题了。</p>
+<p>我们记录$up_i$与$down_i$表示子树$i$归零所需要的+1与-1的最少操作次数。子树与子树之间可以通过根节点一并操作。这样根节点的权值在操作子树时至少会变化$\max\{up_v\}-\max\{down_v\}$，之后再让根节点归零再进行$|v_u+\max\{up_v\}-\max\{down_v\}|$次操作。</p>
+<h2 id="Codeforces-295-E-Yaroslav-and-Points"><a href="#Codeforces-295-E-Yaroslav-and-Points" class="headerlink" title="Codeforces 295 E. Yaroslav and Points"></a>Codeforces 295 E. Yaroslav and Points</h2><blockquote>
+<p>给出一个序列$a_i$，（$|a_i| \leq 10^9$），单点修改。询问给出$l,r$，求$\sum\limits_{i=l}^{r}\sum\limits_{j=i}^{r}(x_j-x_i)$</p>
+</blockquote>
+<p>按照权值建线段树（动态开点或离散化），接下来询问的可以看做线段上两两之间的距离之和。分治求解可以得出两边内部两两的距离，于是只需要计算出所有跨越两边的点之间的距离之和就可以了。既然这样，就可以通过维护区间和以及区间点个数求解了。</p>
+<h2 id="洛谷5154-数列游戏"><a href="#洛谷5154-数列游戏" class="headerlink" title="洛谷5154 数列游戏"></a>洛谷5154 数列游戏</h2><blockquote>
+<p>给出$n$个物品排成一排，第$i$个物品有两个值$a_i$与$b_i$。每次可以选择两个$a$值不互质的相邻物品移除，并获得他们$b$值之和的得分。问最多能得分多少。$(n \leq 800)$</p>
+</blockquote>
+<p>直接区间DP并不好处理。我们可以先做一次可行性DP，$f_{i,j}$表示$[i,j]$是否可行。$f$的转移有两种：一是枚举中断点；二是两端匹配。复杂度$O(n^3 \cdot log)$</p>
+<p>处理出来后，再DP一次。$g_i$表示前$i$个的最大得分，分为$i$选与$i$不选，$i$不选直接继承，$i$选可以枚举左端点转移。复杂度$O(n^2)$</p>
+<h2 id="HDU-6601-Keen-On-Everything-But-Triangle"><a href="#HDU-6601-Keen-On-Everything-But-Triangle" class="headerlink" title="HDU 6601 Keen On Everything But Triangle"></a>HDU 6601 Keen On Everything But Triangle</h2><blockquote>
+<p>给出$n$根木棍$a_i$，每次询问一段区间$[l,r]$，问其中是否存在能拼成三角形的三根，并输出其周长的最大值。$n \leq 10^5,a_i \leq 10^9$</p>
+</blockquote>
+<p>考虑对于一些木棍，要使能拼成三角形且周长最长，一定是选择权值相近的三根。因此一个思路是将木棍排序，然后从大到小枚举连续的三根判断能不能拼成三角形。也可以不排序，每次用主席树维护区间第$k$大进行判断。</p>
+<p>这样的复杂度是$O(nm \log n)$。但由于$a_i \leq 10^9$，要让一个木棍集合不可能形成三角形并使集合大小尽量大，这样一个集合就是<code>斐波那契数列</code>。而斐波那契数列到第$50$项就超过$10^9$，因此我们从大到小最多枚举$50$次一定会有解，并且一定是最优的。依然用主席树来维护。复杂度$O(50m \log n)$</p>
+<h2 id="Codeforces-675-C-Money-Transfers"><a href="#Codeforces-675-C-Money-Transfers" class="headerlink" title="Codeforces 675 C. Money Transfers"></a>Codeforces 675 C. Money Transfers</h2><blockquote>
+<p>给出一个长度为$n$的圆环，第$i$个位置有权值$a_i$，保证权值和一定为0。每个位置的权值可以向左或向右转移，问最少转移多少次使圆环上每个位置的权值都是0。</p>
+</blockquote>
+<p>显然一段长度为$l$的和为0的序列最多转移$l-1$次，因为相互之间你给我我给你可以只做一次。因此我们的任务是求出怎样划分使得和为0的序列尽量多。</p>
+<p>利用前缀和的性质，和为0意味着前缀和的值相等。因此对于每一个前缀和的值用<code>map</code>求出与它相等的值有多少个，巧妙地解决了“环”的问题。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/题解/" rel="tag"><i class="fa fa-tag"></i>题解</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/08/07/学习笔记/数论函数/" rel="next" title="数论函数">
+                <i class="fa fa-chevron-left"></i> 数论函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2019/08/09/学习笔记/小技巧:出锅记录/" rel="prev" title="小技巧/出锅记录">
+                小技巧/出锅记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="https://files-cdn.cnblogs.com/files/qixingzhi/head_protrait.gif"
+      alt="DennyQi">
+  <p class="site-author-name" itemprop="name">DennyQi</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      My Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://dilute.xyz/" title="https://dilute.xyz/" rel="noopener" target="_blank">stO Dilute Orz</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/linzhengmin" title="https://www.cnblogs.com/linzhengmin" rel="noopener" target="_blank">stO Lukelin Orz</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://isonan.cn/" title="http://isonan.cn/" rel="noopener" target="_blank">stO Isonan Orz</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://memset0.cn/" title="https://memset0.cn/" rel="noopener" target="_blank">stO Memset0 Orz</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://dilemma-cmz.github.io/" title="https://dilemma-cmz.github.io/" rel="noopener" target="_blank">stO Dilemma Orz</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-1063-B-Labyrinth"><span class="nav-number">1.</span> <span class="nav-text">Codeforces 1063 B. Labyrinth</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-1019-A-Elections"><span class="nav-number">2.</span> <span class="nav-text">Codeforces 1019 A. Elections</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-777-D-Cloud-of-Hashtags"><span class="nav-number">3.</span> <span class="nav-text">Codeforces 777 D. Cloud of Hashtags</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-442-B-Andrey-and-Problem"><span class="nav-number">4.</span> <span class="nav-text">Codeforces 442 B. Andrey and Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-1096-D-Easy-Problem"><span class="nav-number">5.</span> <span class="nav-text">Codeforces 1096 D. Easy Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu-P2336-喵星球上的点名"><span class="nav-number">6.</span> <span class="nav-text">Luogu P2336 喵星球上的点名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-988-D-Points-and-Powers-of-Two"><span class="nav-number">7.</span> <span class="nav-text">Codeforces 988 D. Points and Powers of Two</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-375-B-Maximum-Submatrix-2"><span class="nav-number">8.</span> <span class="nav-text">Codeforces 375 B. Maximum Submatrix 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-2-B-The-least-round-way"><span class="nav-number">9.</span> <span class="nav-text">Codeforces 2 B. The least round way</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-463-D-Gargari-and-Permutations"><span class="nav-number">10.</span> <span class="nav-text">Codeforces 463 D. Gargari and Permutations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-449-B-Jzzhu-and-Cities"><span class="nav-number">11.</span> <span class="nav-text">Codeforces 449 B. Jzzhu and Cities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-471-D-MUH-and-Cube-Walls"><span class="nav-number">12.</span> <span class="nav-text">Codeforces 471 D. MUH and Cube Walls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-1156-C-Match-Points"><span class="nav-number">13.</span> <span class="nav-text">Codeforces 1156 C. Match Points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-274-B-Zero-Tree"><span class="nav-number">14.</span> <span class="nav-text">Codeforces 274 B. Zero Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-295-E-Yaroslav-and-Points"><span class="nav-number">15.</span> <span class="nav-text">Codeforces 295 E. Yaroslav and Points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#洛谷5154-数列游戏"><span class="nav-number">16.</span> <span class="nav-text">洛谷5154 数列游戏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDU-6601-Keen-On-Everything-But-Triangle"><span class="nav-number">17.</span> <span class="nav-text">HDU 6601 Keen On Everything But Triangle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-675-C-Money-Transfers"><span class="nav-number">18.</span> <span class="nav-text">Codeforces 675 C. Money Transfers</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DennyQi</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function() {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+</body>
+</html>
