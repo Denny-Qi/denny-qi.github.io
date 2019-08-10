@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"b2t":true,"scrollpercent":true},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('Password?') !== ''){
+                alert('Wrong Answer!');
+                history.back();
+            }else{
+                alert('Accepted!');
+            }
+        }
+    })();
+</script>
+
+  <meta name="description" content="后缀数组$(Suffix \ Array,SA)$是一个处理字符串问题非常有用的数据结构。其基于将字符串的所有后缀按照字典序排序（称为后缀排序），维护后缀之间的最长公共前缀，将许多字符串问题转化为区间的问题求解。">
+<meta name="keywords" content="字符串,后缀数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「后缀数组」学习笔记">
+<meta property="og:url" content="http://denny-qi.github.io/2019/08/10/学习笔记/后缀数组学习笔记/index.html">
+<meta property="og:site_name" content="DennyQi&#39;s Site">
+<meta property="og:description" content="后缀数组$(Suffix \ Array,SA)$是一个处理字符串问题非常有用的数据结构。其基于将字符串的所有后缀按照字典序排序（称为后缀排序），维护后缀之间的最长公共前缀，将许多字符串问题转化为区间的问题求解。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.loli.net/2019/08/10/eUKIOrcjuxLDAFz.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/10/KexG9myD1hqzSAk.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/10/CxfL7EloiycShI5.png">
+<meta property="og:image" content="https://i.loli.net/2019/08/10/MYWZX7IH2URGBLv.png">
+<meta property="og:updated_time" content="2019-08-10T09:10:47.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「后缀数组」学习笔记">
+<meta name="twitter:description" content="后缀数组$(Suffix \ Array,SA)$是一个处理字符串问题非常有用的数据结构。其基于将字符串的所有后缀按照字典序排序（称为后缀排序），维护后缀之间的最长公共前缀，将许多字符串问题转化为区间的问题求解。">
+<meta name="twitter:image" content="https://i.loli.net/2019/08/10/eUKIOrcjuxLDAFz.png">
+  <link rel="canonical" href="http://denny-qi.github.io/2019/08/10/学习笔记/后缀数组学习笔记/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>「后缀数组」学习笔记 | DennyQi's Site</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  <div class="container sidebar-position-right">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DennyQi's Site</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Practice Makes Perfect</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://denny-qi.github.io/2019/08/10/学习笔记/后缀数组学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DennyQi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2019/08/09/5vWaGcCgtxlU2wA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DennyQi's Site">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">「后缀数组」学习笔记
+
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-08-10 15:53:42" itemprop="dateCreated datePublished" datetime="2019-08-10T15:53:42+08:00">2019-08-10</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>后缀数组$(Suffix \ Array,SA)$是一个处理字符串问题非常有用的数据结构。其基于将字符串的所有后缀按照字典序排序（称为后缀排序），维护后缀之间的最长公共前缀，将许多字符串问题转化为区间的问题求解。</p>
+<a id="more"></a>
+<p>以下“后缀$i$”代表子串$S[i..n]$。</p>
+<h1 id="构造后缀数组"><a href="#构造后缀数组" class="headerlink" title="构造后缀数组"></a>构造后缀数组</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>后缀数组$sa_i$表示字典序从小到大排名为$i$的后缀的起始位置。</p>
+<p>定义空字符的字典序小于任何其他字符。</p>
+<h2 id="倍增法"><a href="#倍增法" class="headerlink" title="倍增法"></a>倍增法</h2><p>$Manber$ &amp; $Mayer$倍增法构造后缀数组，复杂度$O(n \log n)$。</p>
+<p>后缀之间比较的复杂度是$O(n)$的，因此暴力排序的复杂度是$O(n^2 \log n)$。而各个后缀之间不像普通的数列，它们内部是有联系的——即后缀关系。我们每次对所有后缀的<strong>前$2^k$位</strong>排序。之后当我们要对所有后缀前$2^{k+1}$位排序的时候，充分利用排$2^k$时的信息。</p>
+<p>以下$2^k$指所有长度为$2^k$的后缀（不足则补空字符）。</p>
+<p>由于已对所有$2^k$进行了排序，也就知道了所有$2^k$的相对关系。每一个$2^{k+1}$都是由两个$2^k$拼起来得到的，这样排$2^{k+1}$相当于是在<strong>排二元组</strong>（即由两个排名组成，前者为第一关键字，后者为第二关键字）。问题转化为了快速对二元组进行排序。</p>
+<h2 id="用基数排序排二元组"><a href="#用基数排序排二元组" class="headerlink" title="用基数排序排二元组"></a>用基数排序排二元组</h2><p>基数排序可以$O(n)$排二元组，这也就使得倍增法构造$SA$的复杂度达到了$O(n \log n)$。</p>
+<p>先将所有二元组按照<strong>第二关键字</strong>从小到大排序。然后按照顺序，把每个二元组按照第一关键字分配到桶里。在入桶时像入栈一样压入，保持各个桶里的二元组的第二关键字是从小到大的。然后从第一个桶到最后一个桶，每次从<strong>桶底</strong>取出二元组，按顺序排列，就排好序了。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p><img src="https://i.loli.net/2019/08/10/eUKIOrcjuxLDAFz.png" alt></p>
+<p>在实现的过程中，我们继承上一轮（也就是长度为$2^{k-1}$的后缀）的排名结果。$sa_i$表示排名为$i$的长度为$2^{k-1}$的后缀的起始位置。$x_i$表示后缀$i$的前$2^{k-1}$位的排名。$x_i$的这个名次得是可重的，也就是相同的串名次严格相同。如上图中的$rank$。</p>
+<p>$x_i$作为第一关键字，第二关键字就是$x_{i+k}$。由于要做基数排序，我们需要一个按照第二关键字来排的顺序。显然第二关键字为空（$i+k&gt;n$）的二元组排在最前。其余按照上一轮的$sa_i$的顺序保存。这个顺序保存在数组$y$内，$y_i$存第$i$小的第二关键字对应的<strong>第一关键字位置</strong>。</p>
+<p>接下来开始基数排序。我们用一个数组$c_i$表示第一关键字为$i$的二元组个数（桶的大小）。然后对$c$做前缀和，依然保存在$c$中。然后，按照第二关键字<strong>从大到小</strong>的顺序在桶里取出排名（注意，代码实现时采用从大到小）。具体方法是，$y_i$表示第一关键字位置，对应的第一关键字排名是$x_{y_i}$，由于第二关键字是从大到小的，因此这对二元组的排名一定是$c_{x_{y_i}}$。因此在代码中我们写道<code>sa[c[x[y[i]]]--]=y[i]</code>，这就是为什么我们要在$y$中去保存第一关键字位置。</p>
+<p>至此$2^k$的$sa$就求完了，然而还需要处理出$x$以便下一轮求解。而我们依然需要利用当前$x$中的信息来求排名，因此就需要一个临时数组了。为了节省空间，我们发现$y$数组已经没用了，因此我们就把原来$x$的信息先存到$y$里面去。方法很简单：$swap(x,y)$交换指针即可。如果相同后缀排名可以不同，那直接用<code>x[sa[i]]=i</code>来做就可以了，而相等时排名要求严格相同,因此我们要增加一个判断——排名第$i$的二元组是否和排名第$i-1$的二元组的完全相同。也就是是否满足<code>y[sa[i]]==y[sa[i-1]]&amp;&amp;y[sa[i]+k]==y[sa[i-1]+k]</code>。</p>
+<p>当所有后缀都已经两两不同时，那么所有后缀的排名已经水落石出了，跳出循环即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">GetSA</span><span class="params">(<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) c[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) ++c[x[i] = s[i]];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) c[i] += c[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; --i) sa[c[x[i]]--] = i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k += k)&#123;</span><br><span class="line">        p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n-k+<span class="number">1</span>; i &lt;= n; ++i) y[++p] = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span>(sa[i] &gt; k) y[++p] = sa[i]-k;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) c[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) ++c[x[i]];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) c[i] += c[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; --i) sa[c[x[y[i]]]--] = y[i], y[i] = <span class="number">0</span>;</span><br><span class="line">        swap(x,y);</span><br><span class="line">        x[sa[<span class="number">1</span>]] = <span class="number">1</span>, p = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) x[sa[i]] = (y[sa[i]]==y[sa[i<span class="number">-1</span>]] &amp;&amp; y[sa[i]+k]==y[sa[i<span class="number">-1</span>]+k]) ? p : ++p;</span><br><span class="line">        <span class="keyword">if</span>(p &gt;= n) <span class="keyword">break</span>;</span><br><span class="line">        m = p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="最长公共前缀"><a href="#最长公共前缀" class="headerlink" title="最长公共前缀"></a>最长公共前缀</h1><p>后缀数组在解决问题的时候几乎都要求一个最长公共前缀$（Longest Common Prefix,LCP）$。</p>
+<p>后缀数组将一个字符串所有的后缀处理好，那么后缀之间的前缀关系就非常重要。比如说经典的字符串匹配问题（$KMP$可以$O(n)$解决），如果用后缀数组来做，我们就要把文本串和模式串<strong>接在一起</strong>（模式串接在后面），然后整个做后缀排序。匹配即找与模式串相等的子串，等价于在大串的所有后缀中寻找一个后缀，使得它与模式串（也是一个后缀）的$LCP$长度等于模式串长度。</p>
+<p>而后缀排序后相同的前缀肯定排在一起。因此很多时候通过$LCP$，字符串的问题能够转化为区间问题，因此线段树、莫队等数据结构就有了用武之地。</p>
+<h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>定义$LCP(i,j)$表示后缀$i$与后缀$j$的$LCP$长度。</p>
+<p>定义$height$数组表示两个<strong>排名相邻</strong>的后缀的$LCP$。即$height_i=LCP(sa_{i-1},sa_{i})$</p>
+<p><img src="https://i.loli.net/2019/08/10/KexG9myD1hqzSAk.png" alt></p>
+<h2 id="求Height数组"><a href="#求Height数组" class="headerlink" title="求Height数组"></a>求Height数组</h2><p>两个后缀的$LCP$一定其排名那段$height$中的最小值。这就是刚才所说的区间问题。因此只要高效地求出$height$数组就能利用$ST$表来求得$LCP$了。</p>
+<p>我们不按排名顺序来求，而是按照<strong>后缀的位置</strong>从前到后来求$height$。</p>
+<p>假设我们已经求得后缀$i-1$与排在它前一个的后缀$k$的$height$，即已经求得$height_{rnk_{i-1}}$</p>
+<p><img src="https://i.loli.net/2019/08/10/CxfL7EloiycShI5.png" alt></p>
+<p>接下来要考虑后缀$i$和排在它前一个的后缀$p$。</p>
+<p><img src="https://i.loli.net/2019/08/10/MYWZX7IH2URGBLv.png" alt></p>
+<p>后缀$i$相对于后缀$i-1$只少了第一个字符。而既然肯定的是后缀$k+1$与后缀$i$的$LCP$为$height_{rnk_{i-1}}-1$，那么$LCP(p,i)$的长度至少会等于$height_{rnk_{i-1}}-1$。因此有$height_{rnk_{i}} \geq height_{rnk_{i-1}}-1$。</p>
+<p>而接下来多出的部分暴力匹配过去即可。因为我们的$height$近乎于单调递增（每次只减$1$），也就保证了求$height$数组的复杂度是近似为$O(n)$的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">GetHeight</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) rnk[sa[i]] = i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(k) --k;</span><br><span class="line">        <span class="keyword">while</span>(s[i+k] == s[sa[rnk[i]<span class="number">-1</span>]+k]) ++k;</span><br><span class="line">        height[rnk[i]] = k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="POJ-2774-Long-Long-Message"><a href="#POJ-2774-Long-Long-Message" class="headerlink" title="POJ 2774 Long Long Message"></a>POJ 2774 Long Long Message</h2><blockquote>
+<p>给出两个字符串（$n \leq 10^4$），求两者的最长公共子串（连续）</p>
+</blockquote>
+<p>将两个字符串拼接在一起，求出$\max\{height_i\}$就是答案，注意要满足两个后缀的要分别存在于各自的字符串内。</p>
+<h2 id="Luogu-2852-Milk-Patterns"><a href="#Luogu-2852-Milk-Patterns" class="headerlink" title="Luogu 2852 Milk Patterns"></a>Luogu 2852 Milk Patterns</h2><blockquote>
+<p>给出一个字符串，求出其中至少出现$k$次的最长子串。（$1 \leq n,k \leq 2 \cdot 10^4$）</p>
+</blockquote>
+<p>出现$k$次的串在后缀数组中一定是排在一起的，于是问题转化为在$height$数组中找长度为$k-1$的区间，使得其最小值最大。可以二分，也可以单调队列。</p>
+<h2 id="Luogu-3975-弦论"><a href="#Luogu-3975-弦论" class="headerlink" title="Luogu 3975 弦论"></a>Luogu 3975 弦论</h2><blockquote>
+<p>给出一个字符串，求本质不同子串个数</p>
+</blockquote>
+<p>子串就是每一个后缀的所有前缀。后缀排序后，每一个后缀相对于排名前一个，除了$height$部分，其余部分都是本质不同的，累加即可。</p>
+<h2 id="Luogu-4051-字符加密"><a href="#Luogu-4051-字符加密" class="headerlink" title="Luogu 4051 字符加密"></a>Luogu 4051 字符加密</h2><blockquote>
+<p>给出一个字符串，排成环状，对环上每个起点绕一圈的串（每个长度都为n）按字典序排序，问字典序最小的。（最小表示法问题）</p>
+</blockquote>
+<p>字符串后面再拼一个自己，做后缀排序。</p>
+<h2 id="Luogu-4248-差异"><a href="#Luogu-4248-差异" class="headerlink" title="Luogu 4248 差异"></a>Luogu 4248 差异</h2><blockquote>
+<p>求$\sum\limits_{1 \leq i &lt; j \leq n} lcp(i,j)$</p>
+</blockquote>
+<p>这个问题等价于求出$height$之后，以区间最小值作为区间值的所有区间和。我们考虑一个区间最小值对整个区间的贡献，是以这个最小值靠左作为起点，靠右作为终点的所有区间。因此问题转化为求解每个最小值对多大的区间产生贡献。利用单调栈维护。</p>
+<p>其实这个问题求的就是字符串中相同子串个数。</p>
+<h2 id="Luogu-3181-找相同字符"><a href="#Luogu-3181-找相同字符" class="headerlink" title="Luogu 3181 找相同字符"></a>Luogu 3181 找相同字符</h2><blockquote>
+<p>给出两个字符串，求相同子串个数</p>
+</blockquote>
+<p>两串合并后（中间插入#）等价于上一题，只不过两个子串必须分开一个在第一个，一个在第二个。这里需要一个容斥思想，即整个答案减去两个串的子答案。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/字符串/" rel="tag"><i class="fa fa-tag"></i>字符串</a>
+          
+            <a href="/tags/后缀数组/" rel="tag"><i class="fa fa-tag"></i>后缀数组</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/08/09/学习笔记/网络流学习笔记/" rel="next" title="「网络流」学习笔记">
+                <i class="fa fa-chevron-left"></i> 「网络流」学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="https://i.loli.net/2019/08/09/5vWaGcCgtxlU2wA.jpg"
+      alt="DennyQi">
+  <p class="site-author-name" itemprop="name">DennyQi</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      My Friends
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://dilute.xyz/" title="https://dilute.xyz/" rel="noopener" target="_blank">stO Dilute Orz</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/linzhengmin" title="https://www.cnblogs.com/linzhengmin" rel="noopener" target="_blank">stO Lukelin Orz</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://isonan.cn/" title="http://isonan.cn/" rel="noopener" target="_blank">stO Isonan Orz</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://memset0.cn/" title="https://memset0.cn/" rel="noopener" target="_blank">stO Memset0 Orz</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://dilemma-cmz.github.io/" title="https://dilemma-cmz.github.io/" rel="noopener" target="_blank">stO Dilemma Orz</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#构造后缀数组"><span class="nav-number">1.</span> <span class="nav-text">构造后缀数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#倍增法"><span class="nav-number">1.2.</span> <span class="nav-text">倍增法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用基数排序排二元组"><span class="nav-number">1.3.</span> <span class="nav-text">用基数排序排二元组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">1.4.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最长公共前缀"><span class="nav-number">2.</span> <span class="nav-text">最长公共前缀</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-1"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求Height数组"><span class="nav-number">2.2.</span> <span class="nav-text">求Height数组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例题"><span class="nav-number">3.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ-2774-Long-Long-Message"><span class="nav-number">3.1.</span> <span class="nav-text">POJ 2774 Long Long Message</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu-2852-Milk-Patterns"><span class="nav-number">3.2.</span> <span class="nav-text">Luogu 2852 Milk Patterns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu-3975-弦论"><span class="nav-number">3.3.</span> <span class="nav-text">Luogu 3975 弦论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu-4051-字符加密"><span class="nav-number">3.4.</span> <span class="nav-text">Luogu 4051 字符加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu-4248-差异"><span class="nav-number">3.5.</span> <span class="nav-text">Luogu 4248 差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu-3181-找相同字符"><span class="nav-number">3.6.</span> <span class="nav-text">Luogu 3181 找相同字符</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DennyQi</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function() {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+</body>
+</html>
