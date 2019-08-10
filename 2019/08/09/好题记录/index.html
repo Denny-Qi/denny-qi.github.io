@@ -76,7 +76,7 @@
 <meta property="og:site_name" content="DennyQi">
 <meta property="og:description" content="记录一下做过的好题吧~">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-09T04:48:09.982Z">
+<meta property="og:updated_time" content="2019-08-09T11:11:19.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="好题记录">
 <meta name="twitter:description" content="记录一下做过的好题吧~">
@@ -266,7 +266,7 @@
                 
               
 
-              <time title="Created: 2019-08-09 12:15:50 / Modified: 12:48:09" itemprop="dateCreated datePublished" datetime="2019-08-09T12:15:50+08:00">2019-08-09</time>
+              <time title="Created: 2019-08-09 12:15:50 / Modified: 19:11:19" itemprop="dateCreated datePublished" datetime="2019-08-09T12:15:50+08:00">2019-08-09</time>
             </span>
           
             
@@ -393,6 +393,10 @@
 </blockquote>
 <p>显然一段长度为$l$的和为0的序列最多转移$l-1$次，因为相互之间你给我我给你可以只做一次。因此我们的任务是求出怎样划分使得和为0的序列尽量多。</p>
 <p>利用前缀和的性质，和为0意味着前缀和的值相等。因此对于每一个前缀和的值用<code>map</code>求出与它相等的值有多少个，巧妙地解决了“环”的问题。</p>
+<h2 id="Codeforces-468-B-Two-Sets"><a href="#Codeforces-468-B-Two-Sets" class="headerlink" title="Codeforces 468 B. Two Sets"></a>Codeforces 468 B. Two Sets</h2><blockquote>
+<p>给出$n$个不同数，要将所有数分为两个集合$A,B$。再给出两个数字$a,b$，对于任意一个值为$x$的数，如果$x \in A$，那么$a-x \in A$；如果$x \in B$，那么$b-x \in B$。输出方案。</p>
+</blockquote>
+<p>否定后件：如果$a-x \notin A$，那么$x \notin A$。等价于如果$a-x \in B$，那么$x \in B$。也就是说只要$a-x$存在，那么$x$和$a-x$必须在同一个集合。同理如果$b-x$存在，那么$x$与$b-x$也必定在同一个集合。因此用并查集或者$2-sat$维护即可。</p>
 
     </div>
 
@@ -409,8 +413,8 @@
         </div>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/08/07/学习笔记/数论函数学习笔记/" rel="next" title="数论函数">
-                <i class="fa fa-chevron-left"></i> 数论函数
+              <a href="/2019/08/07/学习笔记/数论函数学习笔记/" rel="next" title="「数论函数」学习笔记">
+                <i class="fa fa-chevron-left"></i> 「数论函数」学习笔记
               </a>
             
           </div>
@@ -516,7 +520,13 @@
         
           
         
-        <span class="site-state-item-count">3</span>
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
@@ -565,7 +575,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-1063-B-Labyrinth"><span class="nav-number">1.</span> <span class="nav-text">Codeforces 1063 B. Labyrinth</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-1019-A-Elections"><span class="nav-number">2.</span> <span class="nav-text">Codeforces 1019 A. Elections</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-777-D-Cloud-of-Hashtags"><span class="nav-number">3.</span> <span class="nav-text">Codeforces 777 D. Cloud of Hashtags</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-442-B-Andrey-and-Problem"><span class="nav-number">4.</span> <span class="nav-text">Codeforces 442 B. Andrey and Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-1096-D-Easy-Problem"><span class="nav-number">5.</span> <span class="nav-text">Codeforces 1096 D. Easy Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu-P2336-喵星球上的点名"><span class="nav-number">6.</span> <span class="nav-text">Luogu P2336 喵星球上的点名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-988-D-Points-and-Powers-of-Two"><span class="nav-number">7.</span> <span class="nav-text">Codeforces 988 D. Points and Powers of Two</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-375-B-Maximum-Submatrix-2"><span class="nav-number">8.</span> <span class="nav-text">Codeforces 375 B. Maximum Submatrix 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-2-B-The-least-round-way"><span class="nav-number">9.</span> <span class="nav-text">Codeforces 2 B. The least round way</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-463-D-Gargari-and-Permutations"><span class="nav-number">10.</span> <span class="nav-text">Codeforces 463 D. Gargari and Permutations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-449-B-Jzzhu-and-Cities"><span class="nav-number">11.</span> <span class="nav-text">Codeforces 449 B. Jzzhu and Cities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-471-D-MUH-and-Cube-Walls"><span class="nav-number">12.</span> <span class="nav-text">Codeforces 471 D. MUH and Cube Walls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-1156-C-Match-Points"><span class="nav-number">13.</span> <span class="nav-text">Codeforces 1156 C. Match Points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-274-B-Zero-Tree"><span class="nav-number">14.</span> <span class="nav-text">Codeforces 274 B. Zero Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-295-E-Yaroslav-and-Points"><span class="nav-number">15.</span> <span class="nav-text">Codeforces 295 E. Yaroslav and Points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#洛谷5154-数列游戏"><span class="nav-number">16.</span> <span class="nav-text">洛谷5154 数列游戏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDU-6601-Keen-On-Everything-But-Triangle"><span class="nav-number">17.</span> <span class="nav-text">HDU 6601 Keen On Everything But Triangle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-675-C-Money-Transfers"><span class="nav-number">18.</span> <span class="nav-text">Codeforces 675 C. Money Transfers</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-1063-B-Labyrinth"><span class="nav-number">1.</span> <span class="nav-text">Codeforces 1063 B. Labyrinth</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-1019-A-Elections"><span class="nav-number">2.</span> <span class="nav-text">Codeforces 1019 A. Elections</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-777-D-Cloud-of-Hashtags"><span class="nav-number">3.</span> <span class="nav-text">Codeforces 777 D. Cloud of Hashtags</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-442-B-Andrey-and-Problem"><span class="nav-number">4.</span> <span class="nav-text">Codeforces 442 B. Andrey and Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-1096-D-Easy-Problem"><span class="nav-number">5.</span> <span class="nav-text">Codeforces 1096 D. Easy Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu-P2336-喵星球上的点名"><span class="nav-number">6.</span> <span class="nav-text">Luogu P2336 喵星球上的点名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-988-D-Points-and-Powers-of-Two"><span class="nav-number">7.</span> <span class="nav-text">Codeforces 988 D. Points and Powers of Two</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-375-B-Maximum-Submatrix-2"><span class="nav-number">8.</span> <span class="nav-text">Codeforces 375 B. Maximum Submatrix 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-2-B-The-least-round-way"><span class="nav-number">9.</span> <span class="nav-text">Codeforces 2 B. The least round way</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-463-D-Gargari-and-Permutations"><span class="nav-number">10.</span> <span class="nav-text">Codeforces 463 D. Gargari and Permutations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-449-B-Jzzhu-and-Cities"><span class="nav-number">11.</span> <span class="nav-text">Codeforces 449 B. Jzzhu and Cities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-471-D-MUH-and-Cube-Walls"><span class="nav-number">12.</span> <span class="nav-text">Codeforces 471 D. MUH and Cube Walls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-1156-C-Match-Points"><span class="nav-number">13.</span> <span class="nav-text">Codeforces 1156 C. Match Points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-274-B-Zero-Tree"><span class="nav-number">14.</span> <span class="nav-text">Codeforces 274 B. Zero Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-295-E-Yaroslav-and-Points"><span class="nav-number">15.</span> <span class="nav-text">Codeforces 295 E. Yaroslav and Points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#洛谷5154-数列游戏"><span class="nav-number">16.</span> <span class="nav-text">洛谷5154 数列游戏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDU-6601-Keen-On-Everything-But-Triangle"><span class="nav-number">17.</span> <span class="nav-text">HDU 6601 Keen On Everything But Triangle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-675-C-Money-Transfers"><span class="nav-number">18.</span> <span class="nav-text">Codeforces 675 C. Money Transfers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Codeforces-468-B-Two-Sets"><span class="nav-number">19.</span> <span class="nav-text">Codeforces 468 B. Two Sets</span></a></li></ol></div>
             
 
           </div>
