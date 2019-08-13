@@ -68,18 +68,18 @@
     })();
 </script>
 
-  <meta name="description" content="Description给出$n$个物品，每个物品有体积$v_i$。每个物品都可以选无限个放入背包里，背包中的最终重量为$v_i \% P$。询问$q$次，每次问使背包最终重量为$w_i$的方案数有多少。定义两种方案不同当且仅当两种方案选的物品种类不同。">
+  <meta name="description" content="Description给出$n$种物品，第$i$种物品的重量为$v_i$。每种物品都可以选无限个放入背包里。背包的最终重量为$(\sum k_iv_i) \% P$。询问$q$次，每次询问使得背包最终重量为$w_i$的方案数是多少。定义两种方案不同当且仅当两种方案选的物品种类不同。 $n,q \leq 10^6,P \leq 10^9$">
 <meta name="keywords" content="数论,动态规划">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「LOJ2523」奇怪的背包">
 <meta property="og:url" content="http://denny-qi.github.io/2019/08/13/题解/LOJ2523奇怪的背包/index.html">
 <meta property="og:site_name" content="DennyQi&#39;s Site">
-<meta property="og:description" content="Description给出$n$个物品，每个物品有体积$v_i$。每个物品都可以选无限个放入背包里，背包中的最终重量为$v_i \% P$。询问$q$次，每次问使背包最终重量为$w_i$的方案数有多少。定义两种方案不同当且仅当两种方案选的物品种类不同。">
+<meta property="og:description" content="Description给出$n$种物品，第$i$种物品的重量为$v_i$。每种物品都可以选无限个放入背包里。背包的最终重量为$(\sum k_iv_i) \% P$。询问$q$次，每次询问使得背包最终重量为$w_i$的方案数是多少。定义两种方案不同当且仅当两种方案选的物品种类不同。 $n,q \leq 10^6,P \leq 10^9$">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-13T06:28:58.955Z">
+<meta property="og:updated_time" content="2019-08-13T13:46:13.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「LOJ2523」奇怪的背包">
-<meta name="twitter:description" content="Description给出$n$个物品，每个物品有体积$v_i$。每个物品都可以选无限个放入背包里，背包中的最终重量为$v_i \% P$。询问$q$次，每次问使背包最终重量为$w_i$的方案数有多少。定义两种方案不同当且仅当两种方案选的物品种类不同。">
+<meta name="twitter:description" content="Description给出$n$种物品，第$i$种物品的重量为$v_i$。每种物品都可以选无限个放入背包里。背包的最终重量为$(\sum k_iv_i) \% P$。询问$q$次，每次询问使得背包最终重量为$w_i$的方案数是多少。定义两种方案不同当且仅当两种方案选的物品种类不同。 $n,q \leq 10^6,P \leq 10^9$">
   <link rel="canonical" href="http://denny-qi.github.io/2019/08/13/题解/LOJ2523奇怪的背包/">
 
 
@@ -293,16 +293,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给出$n$个物品，每个物品有体积$v_i$。每个物品都可以选无限个放入背包里，背包中的最终重量为$v_i \% P$。询问$q$次，每次问使背包最终重量为$w_i$的方案数有多少。定义两种方案不同当且仅当两种方案选的物品<strong>种类</strong>不同。</p>
-<a id="more"></a>
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给出$n$种物品，第$i$种物品的重量为$v_i$。每种物品都可以选无限个放入背包里。背包的最终重量为$(\sum k_iv_i) \% P$。询问$q$次，每次询问使得背包最终重量为$w_i$的方案数是多少。定义两种方案不同当且仅当两种方案选的物品<strong>种类</strong>不同。</p>
 <p>$n,q \leq 10^6,P \leq 10^9$</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>考虑只有一个物品选无限个，背包内的最终重量的值域会是怎样的？也就是求$ax \% b$的值域。而这等价于$ax+by$的值域，根据裴蜀定理可得$ax+by=c$有解必须满足$gcd(a,b)|c$。因此$kv \% P$一定为$gcd(v,P)$的倍数。</p>
-<p>这个定理可以推广一下应用到这道题里——$n$个物品的一个集合，$(\sum\limits_{i}^{n}k_iv_i) \% P$的值一定是$gcd(v_1,v_2,\cdots,v_n,P)$的倍数（$k_i &gt; 0$）。询问$(\sum\limits_{i}^{n}k_iv_i) \% P=w$的方案数，也就是有多少子集满足$gcd(v_1,v_2,\cdots,v_n,P)|w$</p>
-<p>我们令$v’_i=gcd(v_i,P)$，那么问题等价于$gcd(v’_1,\cdots,v’_n)|w$。</p>
-<p>考虑动态规划来求解，$dp_{i,j}$表示前$i$个$v’_i$中$gcd$起来为$j$的方案数，可以考虑用刷表法：<script type="math/tex">dp_{i,k}=\sum dp_{i-1,j} \ast [gcd(j,v'_i)==k]</script></p>
+<a id="more"></a>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>考虑只有一种物品，背包的最终重量有哪些取值？也就是问$ax \% b$的值域。而这等价于$ax+by$的值域。由裴蜀定理可得$ax+by=c$有解当且仅当$gcd(a,b)|c$。因此$kv \% P$的取值一定是$gcd(v,P)$的倍数。</p>
+<p>这个定理可以推广到$n$项的不定方程——$n$个物品$(\sum\limits_{i}^{n}k_iv_i) \% P$的值一定是$gcd(v_1,v_2,\cdots,v_n,P)$的倍数（$k_i &gt; 0$）。询问$(\sum\limits_{i}^{n}k_iv_i) \% P=w$的方案数，也就是问在所有物品中，有多少个子集满足$gcd(v_1,v_2,\cdots,v_n,P)|w$。我们令$v’_i=gcd(v_i,P)$，那么问题等价于$gcd(v’_1,\cdots,v’_n)|w$。</p>
+<p>考虑动态规划，$dp_{i,j}$表示前$i$个$v’_i$中$gcd$起来为$j$的子集个数，可以用刷表法：<script type="math/tex">dp_{i,k}=\sum dp_{i-1,j} \ast [gcd(j,v'_i)==k]</script></p>
 <p>这样的复杂度是$O(nP)$的，显然无法通过。</p>
-<p>我们发现$v’_i$一定是$P$的约数，而$P$的约数个数是$10^3$级别的。因此我们<strong>离散化约数</strong>来$dp$。并且因为$v’_i$是全部都是$P$的约数，那么只有当$j$为$P$的约数时状态才可能有解。因此$dp$的两维都可以转化为约数的编号了。</p>
-<p>此时的状态转移就不一样了，因为现在一个$i$可能对应原来的多个$v’$，因此要记录每一个$v’$的出现次数。选的转移方程是</p>
+<p>我们发现$v’_i$一定是$P$的约数，而$P$的约数个数是$10^3$级别的。因此我们<strong>离散化约数</strong>来$dp$。并且因为$v’_i$是全部都是$P$的约数，那么只有当$j$为$P$的约数时状态才可能可行。因此$dp$的两维都可以转化为约数的编号了。</p>
+<p>此时因为现在一个$v’$可能对应原来的多个$v$，因此要记录每一个$v’$原来的出现次数。选择当前物品的转移方程是</p>
 <script type="math/tex; mode=display">dp_{i,k}=\sum dp_{i-1,j} \ast (2^{cnt_i}-1) \ [gcd(s_j,s_i)=k]</script><p>继承的方程是</p>
 <script type="math/tex; mode=display">dp_{i,j} = \sum dp_{i-1,j}</script><p>初始化为</p>
 <script type="math/tex; mode=display">dp_{i,i}=2^{cnt_i}-1</script><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>分清楚<code>n</code>和<code>tot</code>。</p>
