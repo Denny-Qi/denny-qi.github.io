@@ -76,7 +76,7 @@
 <meta property="og:site_name" content="DennyQi&#39;s Site">
 <meta property="og:description" content="数论中有关整除、同余的理论。包括$gcd$与$exgcd$，费马小定理，欧拉定理，（扩展）中国剩余定理等。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-13T11:53:38.151Z">
+<meta property="og:updated_time" content="2019-08-13T11:56:48.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「同余数论」学习笔记">
 <meta name="twitter:description" content="数论中有关整除、同余的理论。包括$gcd$与$exgcd$，费马小定理，欧拉定理，（扩展）中国剩余定理等。">
@@ -379,7 +379,7 @@ x = a_2 + k_2m_2 \\
 <script type="math/tex; mode=display">\dfrac{m_1}{(m_1,m_2)}k_1 \equiv \dfrac{a_2-a_1}{(m_1,m_2)} \pmod {\dfrac{m_2}{(m_1,m_2)}}</script><script type="math/tex; mode=display">k_1 \equiv \dfrac{a_2-a_1}{(m_1,m_2)}  \ast (\dfrac{m_1}{(m_1,m_2)})^{-1} \pmod {\dfrac{m_2}{(m_1,m_2)}}</script><p>化成等式：</p>
 <script type="math/tex; mode=display">k_1 = \dfrac{a_2-a_1}{(m_1,m_2)}  \ast (\dfrac{m_1}{(m_1,m_2)})^{-1} + y \ast \dfrac{m_2}{(m_1,m_2)}</script><p>回代回第一个式子里，得到</p>
 <script type="math/tex; mode=display">x=a_1+m1 \ast \dfrac{a_2-a_1}{(m_1,m_2)}  \ast (\dfrac{m_1}{(m_1,m_2)})^{-1} + y \ast \dfrac{m_2}{(m_1,m_2)}</script><p>化成同余式：</p>
-<script type="math/tex; mode=display">x \equiv a_1+m1 \ast \dfrac{a_2-a_1}{(m_1,m_2)}  \ast (\dfrac{m_1}{(m_1,m_2)})^{-1} \pmod { \dfrac{m_2}{(m_1,m_2)}}</script><p>这是一个$x \equiv a \pmod m$的形式，这个$x$同时满足于前两个方程。因此，至此我们已经将前两个方程合并为了一个。我们不断合并下去直到最后一个，就求出了解。求通解类似。</p>
+<script type="math/tex; mode=display">x \equiv a_1+m1 \ast \dfrac{a_2-a_1}{(m_1,m_2)}  \ast (\dfrac{m_1}{(m_1,m_2)})^{-1} \pmod { \dfrac{m_2}{(m_1,m_2)}}</script><p>这是一个$x \equiv a \pmod m$的形式，这个$x$同时满足于前两个方程。因此，至此我们已经将前两个方程合并为了一个。我们不断合并下去直到最后一个，即可求出解。复杂度$O(n \log a)$。</p>
 
     </div>
 
