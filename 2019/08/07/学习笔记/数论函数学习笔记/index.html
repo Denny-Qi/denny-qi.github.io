@@ -76,7 +76,7 @@
 <meta property="og:site_name" content="DennyQi&#39;s Site">
 <meta property="og:description" content="定义域为正整数，值域为整数的函数称为数论函数。OI中常用的数论函数有$\mu$，$\varphi$等。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-10T03:58:34.498Z">
+<meta property="og:updated_time" content="2019-08-13T06:31:01.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「数论函数」学习笔记">
 <meta name="twitter:description" content="定义域为正整数，值域为整数的函数称为数论函数。OI中常用的数论函数有$\mu$，$\varphi$等。">
@@ -363,9 +363,7 @@
 <p>其中，欧拉函数也是积性函数。满足$\varphi(nm)=\varphi(n)\varphi(m), \ n \perp m$，因此也可以通过线性筛求出。</p>
 <p>既然这样，那么将$n$分解质因数得到$n=\prod\limits_{i}p_{i}^{k_i}$，则有$\varphi(n)=\prod\limits_{i}\varphi(p_i^{k_i})$。</p>
 <p>于是就得出了$\varphi$的通项公式：</p>
-<script type="math/tex; mode=display">\varphi(n)=\prod\limits_{i}(p_i^{k_i}-p_i^{k^{i-1}})=n \prod\limits_{i}(1-{1 \over p_i}) \tag{2.2}</script><h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>欧拉将费马小定理进行了推广，得到了如下恒等式：</p>
-<script type="math/tex; mode=display">a^{\varphi(m-1)} \equiv 1 \pmod{m}, \ a \perp m \tag{2.3}</script><p>欧拉定理可以用来求解乘法逆元。</p>
-<h2 id="欧拉函数的性质"><a href="#欧拉函数的性质" class="headerlink" title="欧拉函数的性质"></a>欧拉函数的性质</h2><h3 id="性质一-1"><a href="#性质一-1" class="headerlink" title="性质一"></a>性质一</h3><script type="math/tex; mode=display">\sum\limits_{d|n}\varphi(d)=n \tag{2.4}</script><p>这个性质非常巧妙。这其实是一个真分数约分的过程。</p>
+<script type="math/tex; mode=display">\varphi(n)=\prod\limits_{i}(p_i^{k_i}-p_i^{k^{i-1}})=n \prod\limits_{i}(1-{1 \over p_i}) \tag{2.2}</script><h2 id="欧拉函数的性质"><a href="#欧拉函数的性质" class="headerlink" title="欧拉函数的性质"></a>欧拉函数的性质</h2><script type="math/tex; mode=display">\sum\limits_{d|n}\varphi(d)=n \tag{2.4}</script><p>这个性质非常巧妙。这其实是一个真分数约分的过程。</p>
 <script type="math/tex; mode=display">\frac{0}{12},\frac{1}{12},\frac{2}{12},\frac{3}{12},\frac{4}{12},\frac{5}{12},\frac{6}{12},\frac{7}{12},\frac{8}{12},\frac{9}{12},\frac{10}{12},\frac{11}{12}</script><p>约分后交换顺序得到</p>
 <script type="math/tex; mode=display">\frac{0}{1},\frac{1}{2},\frac{1}{3},\frac{2}{3},\frac{1}{4},\frac{3}{4},\frac{1}{6},\frac{5}{6},\frac{1}{12},\frac{5}{12},\frac{7}{12},\frac{11}{12}</script><p>当然这个性质可以表示成狄利克雷卷积的形式：</p>
 <script type="math/tex; mode=display">\sum\limits_{d|n}\varphi(d)I(\dfrac{n}{d})=n</script><p>也就是</p>
@@ -489,7 +487,7 @@ g(1)S(n) = \sum\limits_{i=1}^{n}(f*g)(i) -\sum\limits_{d=2}^{n}g(d)S(\left \lflo
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -508,7 +506,9 @@ g(1)S(n) = \sum\limits_{i=1}^{n}(f*g)(i) -\sum\limits_{d=2}^{n}g(d)S(\left \lflo
         
           
         
-        <span class="site-state-item-count">2</span>
+          
+        
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -539,7 +539,9 @@ g(1)S(n) = \sum\limits_{i=1}^{n}(f*g)(i) -\sum\limits_{d=2}^{n}g(d)S(\left \lflo
         
           
         
-        <span class="site-state-item-count">8</span>
+          
+        
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
@@ -588,7 +590,7 @@ g(1)S(n) = \sum\limits_{i=1}^{n}(f*g)(i) -\sum\limits_{d=2}^{n}g(d)S(\left \lflo
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#积性函数"><span class="nav-number">1.</span> <span class="nav-text">积性函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#狄利克雷卷积"><span class="nav-number">2.</span> <span class="nav-text">狄利克雷卷积</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整除分块"><span class="nav-number">3.</span> <span class="nav-text">整除分块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#莫比乌斯函数"><span class="nav-number">4.</span> <span class="nav-text">莫比乌斯函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯函数的性质"><span class="nav-number">4.2.</span> <span class="nav-text">莫比乌斯函数的性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性质一"><span class="nav-number">4.2.1.</span> <span class="nav-text">性质一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性质二"><span class="nav-number">4.2.2.</span> <span class="nav-text">性质二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性筛"><span class="nav-number">4.3.</span> <span class="nav-text">线性筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">4.4.</span> <span class="nav-text">莫比乌斯反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公式-1"><span class="nav-number">4.4.1.</span> <span class="nav-text">公式 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公式-2"><span class="nav-number">4.4.2.</span> <span class="nav-text">公式 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题一"><span class="nav-number">4.5.</span> <span class="nav-text">问题一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题二"><span class="nav-number">4.6.</span> <span class="nav-text">问题二</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#欧拉函数"><span class="nav-number">5.</span> <span class="nav-text">欧拉函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-1"><span class="nav-number">5.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉定理"><span class="nav-number">5.2.</span> <span class="nav-text">欧拉定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉函数的性质"><span class="nav-number">5.3.</span> <span class="nav-text">欧拉函数的性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性质一-1"><span class="nav-number">5.3.1.</span> <span class="nav-text">性质一</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#杜教筛"><span class="nav-number">6.</span> <span class="nav-text">杜教筛</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题一-1"><span class="nav-number">6.1.</span> <span class="nav-text">问题一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题二-1"><span class="nav-number">6.2.</span> <span class="nav-text">问题二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">6.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#积性函数"><span class="nav-number">1.</span> <span class="nav-text">积性函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#狄利克雷卷积"><span class="nav-number">2.</span> <span class="nav-text">狄利克雷卷积</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整除分块"><span class="nav-number">3.</span> <span class="nav-text">整除分块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#莫比乌斯函数"><span class="nav-number">4.</span> <span class="nav-text">莫比乌斯函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯函数的性质"><span class="nav-number">4.2.</span> <span class="nav-text">莫比乌斯函数的性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性质一"><span class="nav-number">4.2.1.</span> <span class="nav-text">性质一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性质二"><span class="nav-number">4.2.2.</span> <span class="nav-text">性质二</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性筛"><span class="nav-number">4.3.</span> <span class="nav-text">线性筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">4.4.</span> <span class="nav-text">莫比乌斯反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公式-1"><span class="nav-number">4.4.1.</span> <span class="nav-text">公式 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公式-2"><span class="nav-number">4.4.2.</span> <span class="nav-text">公式 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题一"><span class="nav-number">4.5.</span> <span class="nav-text">问题一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题二"><span class="nav-number">4.6.</span> <span class="nav-text">问题二</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#欧拉函数"><span class="nav-number">5.</span> <span class="nav-text">欧拉函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-1"><span class="nav-number">5.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉函数的性质"><span class="nav-number">5.2.</span> <span class="nav-text">欧拉函数的性质</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#杜教筛"><span class="nav-number">6.</span> <span class="nav-text">杜教筛</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题一-1"><span class="nav-number">6.1.</span> <span class="nav-text">问题一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题二-1"><span class="nav-number">6.2.</span> <span class="nav-text">问题二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">6.3.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></div>
             
 
           </div>
