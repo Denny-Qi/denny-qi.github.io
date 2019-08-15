@@ -76,7 +76,7 @@
 <meta property="og:site_name" content="DennyQi&#39;s Site">
 <meta property="og:description" content="数论中有关整除、同余的理论。包括$gcd$与$exgcd$，费马小定理，欧拉定理，（扩展）中国剩余定理等。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-13T11:56:48.977Z">
+<meta property="og:updated_time" content="2019-08-15T06:00:37.141Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「同余数论」学习笔记">
 <meta name="twitter:description" content="数论中有关整除、同余的理论。包括$gcd$与$exgcd$，费马小定理，欧拉定理，（扩展）中国剩余定理等。">
@@ -347,40 +347,18 @@ k * i * i^{-1} * r ^ {-1} + r * i^{-1} * r^{-1} ≡ 0 \pmod P \\
 k * r^{-1} + i^{-1} ≡ 0 \pmod P \\ 
 i^{-1} ≡ -\left \lfloor \dfrac{p}{i} \right \rfloor * (p \% i)^{-1} \pmod P \\
 \end{aligned}</script><hr>
-<h1 id="中国剩余定理-CRT"><a href="#中国剩余定理-CRT" class="headerlink" title="中国剩余定理(CRT)"></a>中国剩余定理(CRT)</h1><p>设正整数$m_1, m_2, … , m_r$两两互质，求同余方程组：</p>
+<h1 id="扩展中国剩余定理-EXCRT"><a href="#扩展中国剩余定理-EXCRT" class="headerlink" title="扩展中国剩余定理(EXCRT)"></a>扩展中国剩余定理(EXCRT)</h1><p>求同余方程组：</p>
 <script type="math/tex; mode=display">
 \left \{ \begin{matrix}
 x ≡ a_1 \pmod {m_1} \\
 x ≡ a_2 \pmod {m_2} \\
 \cdots \\
 x ≡ a_r \pmod {m_r} \\
-\end{matrix}\right.</script><p>CRT基于一个同余的基本定理：</p>
-<script type="math/tex; mode=display">a \% b = c \Leftrightarrow (ka) \% b = kc\tag{1}</script><p>设$M = \prod\limits_{k = 1}^{r} m_k$。</p>
-<p>对于方程$i$，我们考虑给出一个$y_i$满足这个方程，而当$y_i$带入别的方程时一定返回$0$，这样最终求$y$的和就得到了方程组的解。显然这样的$y_i$就是$\frac{M}{m_i}$的倍数。然后我们试着给出$y_i \equiv 1 \pmod {m_i}$的解，这就是要求$\frac{M}{m_i}$<strong>模$m_i$意义下的</strong>逆元。由$(1)$可知该$y_i$扩大$a_i$倍即可。因此$y_i=a_i \ast \frac{M}{m_i} \ast (\frac{M}{m_i})^{-1}$</p>
-<p>因此解一定可以为</p>
-<script type="math/tex; mode=display">x = \sum\limits_{i}^{r}a_i \ast \frac{M}{m_i} \ast (\frac{M}{m_i})^{-1}</script><p>而这个解加上$M$的倍数一定还是满足的，因此该方程的解集是</p>
-<script type="math/tex; mode=display">x = kM+\sum\limits_{i}^{r}a_i \ast \frac{M}{m_i} \ast (\frac{M}{m_i})^{-1}</script><p>化为同余式的形式即为</p>
-<script type="math/tex; mode=display">x \equiv \sum\limits_{i}^{r}a_i \ast \frac{M}{m_i} \ast (\frac{M}{m_i})^{-1} \pmod M</script><hr>
-<h1 id="扩展中国剩余定理-EXCRT"><a href="#扩展中国剩余定理-EXCRT" class="headerlink" title="扩展中国剩余定理(EXCRT)"></a>扩展中国剩余定理(EXCRT)</h1><p>CRT要求$m$互质，是很有局限性的。EXCRT可以解决$m$不互质的情况。</p>
-<p>首先考虑前两个式子：</p>
-<script type="math/tex; mode=display">
-\left \{ \begin{matrix}
-x ≡ a_1 \pmod {m_1} \\
-x ≡ a_2 \pmod {m_2} \\
-\end{matrix}\right.</script><p>化成等式，有：</p>
-<script type="math/tex; mode=display">
-\left \{ \begin{matrix}
-x = a_1 + k_1m_1 \\
-x = a_2 + k_2m_2 \\
-\end{matrix}\right.</script><p>因此</p>
-<script type="math/tex; mode=display">a_1+k_1m_1=a_2+k_2m_2</script><script type="math/tex; mode=display">k_1m_1=a_2-a_1+k_2m_2</script><p>接下来这一步非常有启发性，让等式两边同时除以$(m_1,m_2)$（最大公约数）：</p>
-<script type="math/tex; mode=display">\dfrac{m_1}{(m_1,m_2)}k_1=\dfrac{a_2-a_1}{(m_1,m_2)}+\dfrac{m_2}{(m_1,m_2)}k_2</script><p>我们观察到，要使方程有解，必须满足$(m1,m2)|(a_2-a_1)$。</p>
-<p>化成同余式：</p>
-<script type="math/tex; mode=display">\dfrac{m_1}{(m_1,m_2)}k_1 \equiv \dfrac{a_2-a_1}{(m_1,m_2)} \pmod {\dfrac{m_2}{(m_1,m_2)}}</script><script type="math/tex; mode=display">k_1 \equiv \dfrac{a_2-a_1}{(m_1,m_2)}  \ast (\dfrac{m_1}{(m_1,m_2)})^{-1} \pmod {\dfrac{m_2}{(m_1,m_2)}}</script><p>化成等式：</p>
-<script type="math/tex; mode=display">k_1 = \dfrac{a_2-a_1}{(m_1,m_2)}  \ast (\dfrac{m_1}{(m_1,m_2)})^{-1} + y \ast \dfrac{m_2}{(m_1,m_2)}</script><p>回代回第一个式子里，得到</p>
-<script type="math/tex; mode=display">x=a_1+m1 \ast \dfrac{a_2-a_1}{(m_1,m_2)}  \ast (\dfrac{m_1}{(m_1,m_2)})^{-1} + y \ast \dfrac{m_2}{(m_1,m_2)}</script><p>化成同余式：</p>
-<script type="math/tex; mode=display">x \equiv a_1+m1 \ast \dfrac{a_2-a_1}{(m_1,m_2)}  \ast (\dfrac{m_1}{(m_1,m_2)})^{-1} \pmod { \dfrac{m_2}{(m_1,m_2)}}</script><p>这是一个$x \equiv a \pmod m$的形式，这个$x$同时满足于前两个方程。因此，至此我们已经将前两个方程合并为了一个。我们不断合并下去直到最后一个，即可求出解。复杂度$O(n \log a)$。</p>
-
+\end{matrix}\right.</script><p>这里不介绍中国剩余定理，因为扩展中国剩余定理的功能完全包含它。</p>
+<p>我们一个一个方程按顺序来解，每一次都利用上一次的解。假设我们已经求出前$i-1$个方程的解$ans$。设$M=\prod\limits_{j=1}^{i-1}m_j$，显然$ans+k \ast M$都满足前$i-1$个方程。我们要让它满足第$i$个方程，等价于</p>
+<script type="math/tex; mode=display">ans+k \ast M \equiv a_i \pmod {m_i}</script><p>我们用$exgcd$求出$k$，带入更新$M$和$ans$即可。如果此同余方程无解，则代表整个问题无解。</p>
+<p>复杂度$O(n \log m)$。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">EXCRT</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans=a[<span class="number">1</span>],M=m[<span class="number">1</span>],g,x,y,c;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        c = (a[i]-ans%m[i]+m[i])%m[i];</span><br><span class="line">        exgcd(M,m[i],g,x,y);</span><br><span class="line">        <span class="keyword">if</span>(c%g != <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        x = qmul(x,c/g,m[i]);</span><br><span class="line">        ans += x*M;</span><br><span class="line">        M *= m[i]/g;</span><br><span class="line">        ans = (ans+M)%M;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -568,7 +546,7 @@ x = a_2 + k_2m_2 \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#欧几里得算法-GCD"><span class="nav-number">1.</span> <span class="nav-text">欧几里得算法(GCD)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展欧几里得算法-EXGCD"><span class="nav-number">2.</span> <span class="nav-text">扩展欧几里得算法(EXGCD)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#求特解"><span class="nav-number">2.1.</span> <span class="nav-text">求特解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求通解"><span class="nav-number">2.2.</span> <span class="nav-text">求通解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求线性不定方程"><span class="nav-number">2.3.</span> <span class="nav-text">求线性不定方程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#裴蜀定理"><span class="nav-number">2.3.1.</span> <span class="nav-text">裴蜀定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求特解-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">求特解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求最小正整数解"><span class="nav-number">2.3.3.</span> <span class="nav-text">求最小正整数解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求线性同余方程"><span class="nav-number">2.4.</span> <span class="nav-text">求线性同余方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-number">2.5.</span> <span class="nav-text">思想</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#费马小定理"><span class="nav-number">3.</span> <span class="nav-text">费马小定理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#欧拉定理"><span class="nav-number">4.</span> <span class="nav-text">欧拉定理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#乘法逆元"><span class="nav-number">5.</span> <span class="nav-text">乘法逆元</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中国剩余定理-CRT"><span class="nav-number">6.</span> <span class="nav-text">中国剩余定理(CRT)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展中国剩余定理-EXCRT"><span class="nav-number">7.</span> <span class="nav-text">扩展中国剩余定理(EXCRT)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#欧几里得算法-GCD"><span class="nav-number">1.</span> <span class="nav-text">欧几里得算法(GCD)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展欧几里得算法-EXGCD"><span class="nav-number">2.</span> <span class="nav-text">扩展欧几里得算法(EXGCD)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#求特解"><span class="nav-number">2.1.</span> <span class="nav-text">求特解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求通解"><span class="nav-number">2.2.</span> <span class="nav-text">求通解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求线性不定方程"><span class="nav-number">2.3.</span> <span class="nav-text">求线性不定方程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#裴蜀定理"><span class="nav-number">2.3.1.</span> <span class="nav-text">裴蜀定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求特解-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">求特解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求最小正整数解"><span class="nav-number">2.3.3.</span> <span class="nav-text">求最小正整数解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求线性同余方程"><span class="nav-number">2.4.</span> <span class="nav-text">求线性同余方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思想"><span class="nav-number">2.5.</span> <span class="nav-text">思想</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#费马小定理"><span class="nav-number">3.</span> <span class="nav-text">费马小定理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#欧拉定理"><span class="nav-number">4.</span> <span class="nav-text">欧拉定理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#乘法逆元"><span class="nav-number">5.</span> <span class="nav-text">乘法逆元</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展中国剩余定理-EXCRT"><span class="nav-number">6.</span> <span class="nav-text">扩展中国剩余定理(EXCRT)</span></a></li></ol></div>
             
 
           </div>
