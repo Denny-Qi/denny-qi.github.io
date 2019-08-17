@@ -76,7 +76,7 @@
 <meta property="og:site_name" content="DennyQi&#39;s Site">
 <meta property="og:description" content="数论中有关整除、同余的理论。包括$gcd$与$exgcd$，费马小定理，欧拉定理，（扩展）中国剩余定理等。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-15T06:00:37.141Z">
+<meta property="og:updated_time" content="2019-08-17T00:18:08.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「同余数论」学习笔记">
 <meta name="twitter:description" content="数论中有关整除、同余的理论。包括$gcd$与$exgcd$，费马小定理，欧拉定理，（扩展）中国剩余定理等。">
@@ -295,9 +295,7 @@
       
         <p>数论中有关整除、同余的理论。包括$gcd$与$exgcd$，费马小定理，欧拉定理，（扩展）中国剩余定理等。</p>
 <a id="more"></a>
-<hr>
 <h1 id="欧几里得算法-GCD"><a href="#欧几里得算法-GCD" class="headerlink" title="欧几里得算法(GCD)"></a>欧几里得算法(GCD)</h1><p>$gcd(a,b) = gcd(b, a \% b)$</p>
-<hr>
 <h1 id="扩展欧几里得算法-EXGCD"><a href="#扩展欧几里得算法-EXGCD" class="headerlink" title="扩展欧几里得算法(EXGCD)"></a>扩展欧几里得算法(EXGCD)</h1><p>求不定方程：$ ax + by = gcd(a,b) $ </p>
 <h2 id="求特解"><a href="#求特解" class="headerlink" title="求特解"></a>求特解</h2><p>当$b = 0$时，$gcd(a,0) = a$，故解得$x = 1, y = 0$</p>
 <p>设：</p>
@@ -331,12 +329,9 @@ y_1 = x_2 - \left \lfloor a / b \right \rfloor * y_2 \\
 <h2 id="求线性同余方程"><a href="#求线性同余方程" class="headerlink" title="求线性同余方程"></a>求线性同余方程</h2><p>求$ax≡b\ (mod\ m)$</p>
 <p>等价于$ ax + my = b $， 求不定方程即可。</p>
 <h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>以上两个例子告诉我们，当存在一个不定系数$k$时，<strong>等式和同余式是可以相互转化的</strong>。</p>
-<hr>
 <h1 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h1><p>当$P$为质数时，对正整数$a$有</p>
-<script type="math/tex; mode=display">a^{P-1} \equiv 1 \pmod P</script><hr>
-<h1 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h1><p>欧拉定理将费马小定理推广到了$P$不会质数的情况。</p>
-<script type="math/tex; mode=display">a^{\varphi(P)} \equiv 1 \pmod P, a \perp P</script><hr>
-<h1 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h1><p>如果两个整数$a,b$满足$ab \equiv 1 \pmod P$，则称$b$是$a$在模$P$意义下的乘法逆元（反之亦然）。</p>
+<script type="math/tex; mode=display">a^{P-1} \equiv 1 \pmod P</script><h1 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h1><p>欧拉定理将费马小定理推广到了$P$不会质数的情况。</p>
+<script type="math/tex; mode=display">a^{\varphi(P)} \equiv 1 \pmod P, a \perp P</script><h1 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h1><p>如果两个整数$a,b$满足$ab \equiv 1 \pmod P$，则称$b$是$a$在模$P$意义下的乘法逆元（反之亦然）。</p>
 <p>乘法逆元可以直接用$exgcd$求解同余方程，或者使用欧拉定理。</p>
 <p>线性递推求逆元：</p>
 <p>设$P = k \ast i + r$，有<script type="math/tex">k * i + r ≡ 0 \pmod P</script>。记为$a^{-1}$或$inv(a)$</p>
@@ -346,8 +341,7 @@ y_1 = x_2 - \left \lfloor a / b \right \rfloor * y_2 \\
 k * i * i^{-1} * r ^ {-1} + r * i^{-1} * r^{-1} ≡ 0 \pmod P \\
 k * r^{-1} + i^{-1} ≡ 0 \pmod P \\ 
 i^{-1} ≡ -\left \lfloor \dfrac{p}{i} \right \rfloor * (p \% i)^{-1} \pmod P \\
-\end{aligned}</script><hr>
-<h1 id="扩展中国剩余定理-EXCRT"><a href="#扩展中国剩余定理-EXCRT" class="headerlink" title="扩展中国剩余定理(EXCRT)"></a>扩展中国剩余定理(EXCRT)</h1><p>求同余方程组：</p>
+\end{aligned}</script><h1 id="扩展中国剩余定理-EXCRT"><a href="#扩展中国剩余定理-EXCRT" class="headerlink" title="扩展中国剩余定理(EXCRT)"></a>扩展中国剩余定理(EXCRT)</h1><p>求同余方程组：</p>
 <script type="math/tex; mode=display">
 \left \{ \begin{matrix}
 x ≡ a_1 \pmod {m_1} \\
