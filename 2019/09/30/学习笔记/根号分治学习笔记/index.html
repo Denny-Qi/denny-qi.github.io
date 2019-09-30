@@ -68,14 +68,19 @@
     })();
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DennyQi&#39;s Site">
-<meta property="og:url" content="http://denny-qi.github.io/archives/2019/08/index.html">
+  <meta name="description" content="有一类问题，有两种做法：一种是$O(n)$回答$m$个询问；或者$O(n^2)$预处理，然后$O(1)$回答。无论哪种方法，复杂度都是$O(n^2)$的。 此时可以考虑一种折中的办法——根号分治。">
+<meta name="keywords" content="根号分治">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「根号分治」学习笔记">
+<meta property="og:url" content="http://denny-qi.github.io/2019/09/30/学习笔记/根号分治学习笔记/index.html">
 <meta property="og:site_name" content="DennyQi&#39;s Site">
+<meta property="og:description" content="有一类问题，有两种做法：一种是$O(n)$回答$m$个询问；或者$O(n^2)$预处理，然后$O(1)$回答。无论哪种方法，复杂度都是$O(n^2)$的。 此时可以考虑一种折中的办法——根号分治。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-30T14:28:34.900Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DennyQi&#39;s Site">
-  <link rel="canonical" href="http://denny-qi.github.io/archives/2019/08/">
+<meta name="twitter:title" content="「根号分治」学习笔记">
+<meta name="twitter:description" content="有一类问题，有两种做法：一种是$O(n)$回答$m$个询问；或者$O(n^2)$预处理，然后$O(1)$回答。无论哪种方法，复杂度都是$O(n^2)$的。 此时可以考虑一种折中的办法——根号分治。">
+  <link rel="canonical" href="http://denny-qi.github.io/2019/09/30/学习笔记/根号分治学习笔记/">
 
 
 <script id="page-configurations">
@@ -83,13 +88,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
-    isArchive: true
+    isArchive: false
   };
 </script>
 
-  <title>Archive | DennyQi's Site</title>
+  <title>「根号分治」学习笔记 | DennyQi's Site</title>
   
 
 
@@ -217,393 +222,155 @@
         <div class="content-wrap">
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-          <div id="content" class="content page-archive">
+          <div id="content" class="content page-post-detail">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-      <span class="archive-page-counter">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://denny-qi.github.io/2019/09/30/学习笔记/根号分治学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DennyQi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2019/08/09/5vWaGcCgtxlU2wA.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DennyQi's Site">
+    </span>
+      <header class="post-header">
+
         
+          <h1 class="post-title" itemprop="name headline">「根号分治」学习笔记
+
+            
+          </h1>
         
-        
+
+        <div class="post-meta">
+            
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-09-30 10:51:47" itemprop="dateCreated datePublished" datetime="2019-09-30T10:51:47+08:00">2019-09-30</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>有一类问题，有两种做法：一种是$O(n)$回答$m$个询问；或者$O(n^2)$预处理，然后$O(1)$回答。无论哪种方法，复杂度都是$O(n^2)$的。</p>
+<p>此时可以考虑一种折中的办法——根号分治。</p>
+<a id="more"></a>
+<h1 id="根号算法"><a href="#根号算法" class="headerlink" title="根号算法"></a>根号算法</h1><p>其实我们常用的根号算法都可以算是根号分治。</p>
+<h2 id="分块"><a href="#分块" class="headerlink" title="分块"></a>分块</h2><p>在一些难以用$\log$数据结构维护的情况下，常常使用的一种方法是分块。我们假设将序列分为长度为$\sqrt n$的块。一个询问区间可以看成由若干个块组成，同时两端有若干不完整块。对于完整的块我们对于每个块整体回答，对于不完整块则暴力回答。因为完整块最多$\sqrt{n}$个，不完整块内最多不可能超过$2\sqrt n$个。因此每个询问就能$O(\sqrt{n})$解答了。复杂度$O(n \sqrt n)$。</p>
+<p>至于为什么选择$\sqrt n$作为阈值，因为$a+b \geq 2\sqrt{ab}$（均值不等式），因此$\sqrt n$就是一个最好的折中办法。</p>
+<h2 id="莫队"><a href="#莫队" class="headerlink" title="莫队"></a>莫队</h2><p>分块是在线算法。对于复杂的区间询问问题，有时不好处理。此时考虑离线，将询问按照一定方法排序。在得到一个询问的答案后，逐位挪动区间，同时更新答案，直到到达下一个询问区间……</p>
+<p>复杂度的瓶颈就在于用什么方法排序能使<strong>询问区间的挪动次数</strong>尽量少。</p>
+<p>依然将序列分块，设块的大小为$B$。将所有询问按以下规则排序：</p>
+<blockquote>
+<p>第一关键字：左端点块编号<br>第二关键字：右端点块编号<br>第三关键字：右端点编号</p>
+</blockquote>
+<p>当前后询问区间左端点都在同一块内时，左端点的移动距离最多为$B$。整个过程中左端点会出现换块的情况，而换块时移动的总距离不超过$n$，可以不计。因此左端点总共移动$nB$次。(假设询问次数与序列长度同阶)</p>
+<p>当左端点在同一块中时，右端点的排列是单调的。因此右端点移动的总距离为$n \times \dfrac{n}{B}$。</p>
+<p>因此总的复杂度是$O(nB+\dfrac{n^2}{B})$。这是一个关于$B$的打钩函数，因此$B$取$\sqrt n$时最优。</p>
+<h3 id="带修莫队"><a href="#带修莫队" class="headerlink" title="带修莫队"></a>带修莫队</h3><p>我们对于每一个区间需要三维：左端点，右端点，时间。</p>
+<p>修改一下排序规则：</p>
+<blockquote>
+<p>第一关键字：左端点块编号<br>第二关键字：右端点块编号<br>第三关键字：时间</p>
+</blockquote>
+<p>记得时间倒退的时候要把原来的修改的改回去，一个很妙的操作就是<strong>交换</strong>原值和修改值。</p>
+<p>分析时间复杂度：（设$n,m$同阶）</p>
+<p>左端点的移动次数是不变的，是$O(nB)$；右端点块内的移动也是$O(nB)$，块间移动$O(\dfrac{n^2}{B})$。时间指针的复杂度是$O(n \times (\dfrac{n}{B})^2)$。总复杂度为$O(\dfrac{n^3}{B^2}+nB+\dfrac{n^2}{B})$。</p>
+<p>设$y=\dfrac{n^3}{B^2}+nB+\dfrac{n^2}{B}$，则$\dfrac{y}{n}=\dfrac{n^2}{B^2}+B+\dfrac{n}{B}$</p>
+<p>此时可以换元，设$t=\dfrac{n}{B}$，则$\dfrac{y}{n}=t^2+\dfrac{n}{t}+t$</p>
+<p>由于当$\lim_{t\rightarrow \infty}$时，$t^2$为$t$的高阶，因此$\dfrac{y}{n} \approx t^2+\dfrac{n}{t}$</p>
+<p>$<br>t^2+ \dfrac{n}{t} = t^2 + \dfrac{n}{2t}+\dfrac{n}{2t} \geq 3 \sqrt[3]{t^2 \ast \dfrac{n}{2t} \ast \dfrac{n}{2t}}=3\sqrt[3]{\dfrac{n^2}{4}}<br>$<br>因此块应取$O(n^{\frac{2}{3}})$，复杂度为$O(n^{\frac{5}{3}})$</p>
+<h1 id="其他根号分治例题"><a href="#其他根号分治例题" class="headerlink" title="其他根号分治例题"></a>其他根号分治例题</h1><blockquote>
+<p>给出一张无向图，每次可以将一个点及其所有相邻点加上一个值，也可以单点询问权值。$n \leq 10^5$。</p>
+</blockquote>
+<p>朴素的有两种做法：（以下设$n,m$同阶，$n$可代表$m$）</p>
+<p>一，每次直接做出对应修改（最坏情况下$O(n)$），询问时$O(1)$。复杂度$O(n^2)$。</p>
+<p>二，每次在修改的点上打标记，$O(1)$。询问时遍历所有相邻点累计，$O(n)$。复杂度也是$O(n^2)$。</p>
+<p>选择根号分治——修改时，如果这个点的度小于$\sqrt n$，那么暴力给它相邻的点进行修改，否则打标记。询问时，看似好像最坏是$O(n)$的，而事实上，最多只有$\sqrt n$个点时度超过$\sqrt n$的，即最多只有$\sqrt n$个点上有标记需要累加，其余都是已经累加的。因此考虑将一个点对应的邻接表按照度从大到小排序，就能够$O(\sqrt n)$完成询问了。</p>
+<blockquote>
+<p>给出$n$个数，单点修改，询问所有下标模$p$为$k$的元素和。</p>
+</blockquote>
+<p>对模数进行根号分治。模数小于$p$的预处理在数组中，大于等于$p$的暴力统计。修改时直接修改掉原值，并且在其对应的数组中修改即可。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
           
         
-        Um..! 11 posts in total. Keep on posting.
-      </span>
-      
-
-      
-
-  
-  
-  
-
-  
-    
-    <div class="collection-title">
-      <h1 class="archive-year" id="archive-year-2019">2019</h1>
-    </div>
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/22/好题记录/" itemprop="url">
+        <div class="post-tags">
+            <a href="/tags/根号分治/" rel="tag"><i class="fa fa-tag"></i>根号分治</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/08/22/好题记录/" rel="next" title="好题记录">
+                <i class="fa fa-chevron-left"></i> 好题记录
+              </a>
             
-              <span itemprop="name">好题记录</span>
-            
-          </a>
-        
-      </h2>
+          </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-22T12:40:42+08:00"
-              content="2019-08-22">
-          08-22
-        </time>
-      </div>
+          <span class="post-nav-divider"></span>
 
-    </header>
-  </article>
-
-
-
-  
-  
-  
-
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/19/2019暑期模拟赛总结/" itemprop="url">
-            
-              <span itemprop="name">「2019暑期模拟赛」总结</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-19T22:40:26+08:00"
-              content="2019-08-19">
-          08-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-  
-
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/16/学习笔记/后缀自动机学习笔记/" itemprop="url">
-            
-              <span itemprop="name">「后缀自动机」学习笔记</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-16T10:24:42+08:00"
-              content="2019-08-16">
-          08-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-  
-
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/14/题解/CF1093GMultidimensionalQueries/" itemprop="url">
-            
-              <span itemprop="name">Codeforces 1093 G. Multidimensional Queries</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-14T13:16:20+08:00"
-              content="2019-08-14">
-          08-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-  
-
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/13/学习笔记/同余数论学习笔记/" itemprop="url">
-            
-              <span itemprop="name">「同余数论」学习笔记</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-13T14:38:29+08:00"
-              content="2019-08-13">
-          08-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-  
-
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/13/题解/LOJ2523奇怪的背包/" itemprop="url">
-            
-              <span itemprop="name">「LOJ2523」奇怪的背包</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-13T13:12:14+08:00"
-              content="2019-08-13">
-          08-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-  
-
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/10/学习笔记/后缀数组学习笔记/" itemprop="url">
-            
-              <span itemprop="name">「后缀数组」学习笔记</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-10T15:53:42+08:00"
-              content="2019-08-10">
-          08-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-  
-
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/09/学习笔记/网络流学习笔记/" itemprop="url">
-            
-              <span itemprop="name">「网络流」学习笔记</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-09T12:40:05+08:00"
-              content="2019-08-09">
-          08-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-  
-
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/09/小技巧:出锅记录/" itemprop="url">
-            
-              <span itemprop="name">小技巧/出锅记录</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-09T12:30:26+08:00"
-              content="2019-08-09">
-          08-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-  
-
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/07/学习笔记/数论函数学习笔记/" itemprop="url">
-            
-              <span itemprop="name">「数论函数」学习笔记</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-07T22:29:33+08:00"
-              content="2019-08-07">
-          08-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-
-    </div>
+          <div class="post-nav-prev post-nav-item">
+          </div>
+        </div>
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
           
+
 
         </div>
           
@@ -618,8 +385,17 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -743,6 +519,23 @@
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#根号算法"><span class="nav-number">1.</span> <span class="nav-text">根号算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分块"><span class="nav-number">1.1.</span> <span class="nav-text">分块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫队"><span class="nav-number">1.2.</span> <span class="nav-text">莫队</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#带修莫队"><span class="nav-number">1.2.1.</span> <span class="nav-text">带修莫队</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他根号分治例题"><span class="nav-number">2.</span> <span class="nav-text">其他根号分治例题</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
         <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
           
@@ -893,5 +686,9 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
 </body>
 </html>
