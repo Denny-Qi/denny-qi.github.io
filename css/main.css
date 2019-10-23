@@ -154,7 +154,7 @@ body {
   background: #f5f7f9;
   color: #555;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 1.125em;
+  font-size: 1em;
   line-height: 2;
   position: relative;
 }
@@ -584,9 +584,8 @@ pre .keyword,
 pre .javascript .function {
   color: #8959a8;
 }
-.blockquote-center,
-.page-home .post-type-quote blockquote,
-.page-post-detail .post-type-quote blockquote {
+.blockquote-center {
+  font-family: Kai;
   border-left: none;
   margin: 40px 0;
   padding: 0;
@@ -594,11 +593,7 @@ pre .javascript .function {
   text-align: center;
 }
 .blockquote-center::before,
-.page-home .post-type-quote blockquote::before,
-.page-post-detail .post-type-quote blockquote::before,
-.blockquote-center::after,
-.page-home .post-type-quote blockquote::after,
-.page-post-detail .post-type-quote blockquote::after {
+.blockquote-center::after {
   background-position: 0 -6px;
   background-repeat: no-repeat;
   background-size: 22px 22px;
@@ -609,27 +604,19 @@ pre .javascript .function {
   position: absolute;
   width: 100%;
 }
-.blockquote-center::before,
-.page-home .post-type-quote blockquote::before,
-.page-post-detail .post-type-quote blockquote::before {
+.blockquote-center::before {
   background-image: url("../images/quote-l.svg");
   border-top: 1px solid #ccc;
   top: -20px;
 }
-.blockquote-center::after,
-.page-home .post-type-quote blockquote::after,
-.page-post-detail .post-type-quote blockquote::after {
+.blockquote-center::after {
   background-image: url("../images/quote-r.svg");
   background-position: 100% 8px;
   border-bottom: 1px solid #ccc;
   bottom: -20px;
 }
 .blockquote-center p,
-.page-home .post-type-quote blockquote p,
-.page-post-detail .post-type-quote blockquote p,
-.blockquote-center div,
-.page-home .post-type-quote blockquote div,
-.page-post-detail .post-type-quote blockquote div {
+.blockquote-center div {
   text-align: center;
 }
 .post .post-body .group-picture img {
@@ -1016,7 +1003,7 @@ pre .javascript .function {
   border-bottom: none;
   color: #fff;
   display: inline-block;
-  line-height: 1.375em;
+  line-height: 1.6em;
   padding: 0 40px;
   position: relative;
 }
@@ -1032,7 +1019,7 @@ pre .javascript .function {
 .site-title {
   display: inline-block;
   font-family: 'Lato', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 1.375em;
+  font-size: 1.6em;
   font-weight: normal;
   line-height: 1.5;
   vertical-align: top;
@@ -1141,6 +1128,14 @@ pre .javascript .function {
   line-height: 1;
   margin: -20px auto 15px;
   text-align: center;
+}
+blockquote {
+  font-family: Kai;
+  font-size: 18px;
+  border-left: 4px solid #ddd;
+  color: #666;
+  margin: 0;
+  padding: 0 15px;
 }
 .post-sticky-flag {
   display: inline-block;
@@ -1479,6 +1474,37 @@ pre .javascript .function {
   font-size: 0.8125em;
   margin-right: 10px;
 }
+.post-header h1,
+.post-header h2 {
+  margin: initial;
+}
+.posts-expand .post-title-link {
+  line-height: inherit;
+}
+.posts-expand .post-title {
+  font-size: 1.7em;
+}
+.post-body h1 {
+  font-size: 1.9em;
+  border-bottom: 1px solid #eee;
+}
+.post-body h2 {
+  font-size: 1.6em;
+  border-bottom: 1px solid #eee;
+}
+.post-body h3 {
+  font-size: 1.3em;
+  border-bottom: 1px dotted #eee;
+}
+.post-body h4 {
+  font-size: 1.2em;
+}
+.post-body h5 {
+  font-size: 1.07em;
+}
+.post-body h6 {
+  font-size: 1.03em;
+}
 .posts-expand .post-title {
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -1521,6 +1547,11 @@ pre .javascript .function {
 .page-home .post-type-quote .post-tags,
 .page-post-detail .post-type-quote .post-tags {
   display: none;
+}
+.page-home .post-type-quote blockquote,
+.page-post-detail .post-type-quote blockquote {
+  font-family: Kai;
+  font-size: 18px;
 }
 .sidebar {
   background: #222;
@@ -1608,7 +1639,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #12ff4f;
+  background: #ab3cfe;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1935,7 +1966,7 @@ pre .javascript .function {
   width: 10px;
 }
 .page-archive .posts-collapse .archive-page-counter {
-  font-size: 1.125em;
+  font-size: 1.3em;
   left: 20px;
   position: relative;
   top: 3px;
