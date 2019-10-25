@@ -68,18 +68,19 @@
     })();
 </script>
 
-  <meta name="description" content="这里记录一下我的小技巧，以及我做题过程中的出锅记录。">
+  <meta name="description" content="自动机是对于字符串的一个状态转移图。后缀自动机$(SAM)$就是接受一个字符串所有后缀的自动机。既然接受所有后缀，那么它就包含了所有子串的信息。后缀自动机在接受所有后缀信息的前提下使得状态数最少（$DAWG$）。">
+<meta name="keywords" content="后缀自动机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小技巧&#x2F;出锅记录">
-<meta property="og:url" content="http://denny-qi.github.io/2019/08/09/小技巧:出锅记录/index.html">
+<meta property="og:title" content="「后缀自动机」学习笔记">
+<meta property="og:url" content="http://denny-qi.github.io/2019/08/16/学习笔记/后缀自动机学习笔记/index.html">
 <meta property="og:site_name" content="DennyQi&#39;s Site">
-<meta property="og:description" content="这里记录一下我的小技巧，以及我做题过程中的出锅记录。">
+<meta property="og:description" content="自动机是对于字符串的一个状态转移图。后缀自动机$(SAM)$就是接受一个字符串所有后缀的自动机。既然接受所有后缀，那么它就包含了所有子串的信息。后缀自动机在接受所有后缀信息的前提下使得状态数最少（$DAWG$）。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-22T04:40:20.828Z">
+<meta property="og:updated_time" content="2019-08-16T08:55:10.940Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小技巧&#x2F;出锅记录">
-<meta name="twitter:description" content="这里记录一下我的小技巧，以及我做题过程中的出锅记录。">
-  <link rel="canonical" href="http://denny-qi.github.io/2019/08/09/小技巧:出锅记录/">
+<meta name="twitter:title" content="「后缀自动机」学习笔记">
+<meta name="twitter:description" content="自动机是对于字符串的一个状态转移图。后缀自动机$(SAM)$就是接受一个字符串所有后缀的自动机。既然接受所有后缀，那么它就包含了所有子串的信息。后缀自动机在接受所有后缀信息的前提下使得状态数最少（$DAWG$）。">
+  <link rel="canonical" href="http://denny-qi.github.io/2019/08/16/学习笔记/后缀自动机学习笔记/">
 
 
 <script id="page-configurations">
@@ -93,7 +94,7 @@
   };
 </script>
 
-  <title>小技巧/出锅记录 | DennyQi's Site</title>
+  <title>「后缀自动机」学习笔记 | DennyQi's Site</title>
   
 
 
@@ -232,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://denny-qi.github.io/2019/08/09/小技巧:出锅记录/">
+    <link itemprop="mainEntityOfPage" href="http://denny-qi.github.io/2019/08/16/学习笔记/后缀自动机学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DennyQi">
@@ -246,7 +247,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">小技巧/出锅记录
+          <h1 class="post-title" itemprop="name headline">「后缀自动机」学习笔记
 
             
           </h1>
@@ -254,9 +255,6 @@
 
         <div class="post-meta">
             
-        <i class="fa fa-thumb-tack"></i>
-        <span class="post-meta-divider">|</span>
-    
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -267,7 +265,7 @@
                 
               
 
-              <time title="Created: 2019-08-09 12:30:26" itemprop="dateCreated datePublished" datetime="2019-08-09T12:30:26+08:00">2019-08-09</time>
+              <time title="Created: 2019-08-16 10:24:42" itemprop="dateCreated datePublished" datetime="2019-08-16T10:24:42+08:00">2019-08-16</time>
             </span>
           
             <span class="post-meta-item">
@@ -276,14 +274,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/小技巧/" itemprop="url" rel="index"><span itemprop="name">小技巧</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/小技巧/出锅记录/" itemprop="url" rel="index"><span itemprop="name">出锅记录</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
 
                 
                 
@@ -302,46 +293,40 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <script src=/js/crypto-js.js></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">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</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
+        <p>自动机是对于字符串的一个状态转移图。后缀自动机$(SAM)$就是接受一个字符串所有后缀的自动机。既然接受所有后缀，那么它就包含了所有子串的信息。后缀自动机在接受所有后缀信息的前提下使得状态数最少（$DAWG$）。</p>
+<a id="more"></a>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="转移边"><a href="#转移边" class="headerlink" title="转移边"></a>转移边</h2><p>记为$son[u][c]$，即自动机的转移边。</p>
+<h2 id="endpos集合"><a href="#endpos集合" class="headerlink" title="endpos集合"></a>endpos集合</h2><p>定义一个子串的$endpos$集合为：这个子串在串中所有出现的结束位置的集合。</p>
+<p>一个$endpos$集合可以对应多个子串，这些子串长度连续，互为后缀。</p>
+<p>两个不同的$endpos$集合要么是包含与被包含关系，要么是不相交关系。这使得所有$endpos$集合形成一个树形结构。</p>
+<p>后缀自动机中的每一个状态就是一个$endpos$集合。</p>
+<h2 id="len"><a href="#len" class="headerlink" title="len"></a>len</h2><p>一个$endpos$集合对应若干子串，记其中最长的那个子串的长度为$len$。</p>
+<h2 id="后缀链接"><a href="#后缀链接" class="headerlink" title="后缀链接"></a>后缀链接</h2><p>记为$fa[u]$。一个状态有后缀链接：一个$endpos$集合表示若干连续子串。当子串不断取后缀（长度减小），其对应的$endpos$一定单调不减，当到达某一临界点时$endpos$增大，即转移到一个更大的$endpos$集合（状态），此时建立后缀链接。</p>
+<p>从一个状态出发不断跳后缀链接即可遍历所有后缀。</p>
+<h1 id="构造后缀自动机"><a href="#构造后缀自动机" class="headerlink" title="构造后缀自动机"></a>构造后缀自动机</h1><p>我们考虑用增量法来构造后缀自动机：即假设对于字符串$1..i-1$已经构造好一个合法的后缀自动机，现在加入字符$c。</p>
+<p>由于加入了一个字符，也就产生了$i$个新的子串（新串的所有后缀）。整个串变长，一个新的$endpos$集$\{i\}$必须被创建。</p>
+<p>接下来考虑后缀不断缩短，即不断跳后缀链接。当后缀链接跳到的状态（记为$p$）出现一条$c$的转移边时（转移到$q$）：如果满足$len(q)=len(p)+1$，这说明这个新的后缀之前出现过，加入后可以与之前的$endpos$合并，直接令$fa(las)=q$即可；对于$len(q)&gt;len(p)+1$的情况，除了将$q$拆为两个点外没有别的办法。我们完全复制$q$点（包括后缀链接和转移边，记为$clone$），那么$q$和$las$的后缀链接为$clone$。修改$p$出发之前转移到$q$的改为转移到$clone$。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span> c, <span class="keyword">int</span> idx)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = las;</span><br><span class="line">    las = ++tot;</span><br><span class="line">    sz[las] = <span class="number">1</span>, len[las] = idx;</span><br><span class="line">    <span class="keyword">for</span>(; p &amp;&amp; !son[p][c]; p = fa[p]) son[p][c] = las;</span><br><span class="line">    <span class="keyword">if</span>(!p)&#123; fa[las] = <span class="number">1</span>; <span class="keyword">return</span>; &#125;</span><br><span class="line">    <span class="keyword">int</span> q = son[p][c];</span><br><span class="line">    <span class="keyword">if</span>(len[q] == len[p]+<span class="number">1</span>)&#123; fa[las] = q; <span class="keyword">return</span>; &#125;</span><br><span class="line">    len[++tot] = len[p]+<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">memcpy</span>(son[tot],son[q],<span class="keyword">sizeof</span>(son[q])), fa[tot] = fa[q];</span><br><span class="line">    fa[las] = tot, fa[q] = tot;</span><br><span class="line">    <span class="keyword">for</span>(; son[p][c] == q; p = fa[p]) son[p][c] = tot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Parent-Tree"><a href="#Parent-Tree" class="headerlink" title="Parent Tree"></a>Parent Tree</h1><p>之前提到$endpos$集合形成树形结构，他们的树边其实就是后缀链接。因此我们在构造后缀自动机的过程中就构造出了一个与后缀树非常类似的$Parent \ Tree$。</p>
+<p>$Parent \ Tree$中父节点是子节点的后缀，叶节点的$endpos$集合大小一定为$1$。由此可以通过树形$dp$求得所有$endpos$集合的大小。</p>
+<p>$Parent \ Tree$中叶节点即所有后缀。而后缀的$endpos$集合大小必定为$1$。</p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="Luogu3804-【模板】后缀自动机"><a href="#Luogu3804-【模板】后缀自动机" class="headerlink" title="Luogu3804 【模板】后缀自动机"></a>Luogu3804 【模板】后缀自动机</h2><blockquote>
+<p>给出字符串$S$，求子串的出现次数乘上该子串长度的最大值。</p>
+</blockquote>
+<p>在$Parent \ Tree$上$dp$求出$endpos$集合大小。一个子串的出现次数就是其对应$endpos$集合的大小。乘上$len$即可。</p>
+<h2 id="SPOJ694-Distinct-Substrings"><a href="#SPOJ694-Distinct-Substrings" class="headerlink" title="SPOJ694 Distinct Substrings"></a>SPOJ694 Distinct Substrings</h2><blockquote>
+<p>求本质不同子串个数</p>
+</blockquote>
+<p>后缀自动机是一个$DAG$，它以高度压缩的形式储存了所有子串信息。本质不同子串个数等价于起点出发不同路径条数。在$DAG$上$dp$即可。</p>
+<h2 id="Luogu4070-生成魔咒"><a href="#Luogu4070-生成魔咒" class="headerlink" title="Luogu4070 生成魔咒"></a>Luogu4070 生成魔咒</h2><blockquote>
+<p>给出$n$个数，依次从末尾压入字符串。每一次输出本质不同子串个数。</p>
+</blockquote>
+<p>每加入一个字符对答案产生的贡献，就是新出现的子串个数。考虑我们创建后缀链接的过程，是这样的子串之前出现过。因此答案每次累积$len(las)-len(fa[las])$即可。</p>
+<h2 id="Luogu4248-差异"><a href="#Luogu4248-差异" class="headerlink" title="Luogu4248 差异"></a>Luogu4248 差异</h2><blockquote>
+<p>定义$L(i)$为后缀$i$的长度。求$\sum\limits_{1 \leq i &lt; j \leq r}L(i)+L(j)-2 \ast lcp(i,j)$</p>
+</blockquote>
+<p>倒过来建$SAM$，得到的$Parent \ Tree$称为后缀树。令后缀树上一个点到根节点的距离为$len_u$，那么题目要求的等价于所有后缀（叶节点）两两之间的距离。考虑每条边的贡献，树形$dp$统计出每条边两边的叶节点数量即可。</p>
+
     </div>
 
     
@@ -349,10 +334,16 @@ doDecrypt(passwd, onError);
     
 
     <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/后缀自动机/" rel="tag"><i class="fa fa-tag"></i>后缀自动机</a>
+          
+        </div>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/08/07/学习笔记/数论函数学习笔记/" rel="next" title="「数论函数」学习笔记">
-                <i class="fa fa-chevron-left"></i> 「数论函数」学习笔记
+              <a href="/2019/08/14/题解/CF1093GMultidimensionalQueries/" rel="next" title="Codeforces 1093 G. Multidimensional Queries">
+                <i class="fa fa-chevron-left"></i> Codeforces 1093 G. Multidimensional Queries
               </a>
             
           </div>
@@ -360,8 +351,8 @@ doDecrypt(passwd, onError);
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/08/09/学习笔记/网络流学习笔记/" rel="prev" title="「网络流」学习笔记">
-                「网络流」学习笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/19/2019模拟赛总结/" rel="prev" title="「2019模拟赛」总结">
+                「2019模拟赛」总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -393,8 +384,17 @@ doDecrypt(passwd, onError);
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -526,6 +526,23 @@ doDecrypt(passwd, onError);
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转移边"><span class="nav-number">1.1.</span> <span class="nav-text">转移边</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#endpos集合"><span class="nav-number">1.2.</span> <span class="nav-text">endpos集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#len"><span class="nav-number">1.3.</span> <span class="nav-text">len</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后缀链接"><span class="nav-number">1.4.</span> <span class="nav-text">后缀链接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造后缀自动机"><span class="nav-number">2.</span> <span class="nav-text">构造后缀自动机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Parent-Tree"><span class="nav-number">3.</span> <span class="nav-text">Parent Tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例题"><span class="nav-number">4.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu3804-【模板】后缀自动机"><span class="nav-number">4.1.</span> <span class="nav-text">Luogu3804 【模板】后缀自动机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SPOJ694-Distinct-Substrings"><span class="nav-number">4.2.</span> <span class="nav-text">SPOJ694 Distinct Substrings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu4070-生成魔咒"><span class="nav-number">4.3.</span> <span class="nav-text">Luogu4070 生成魔咒</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Luogu4248-差异"><span class="nav-number">4.4.</span> <span class="nav-text">Luogu4248 差异</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
         <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
           

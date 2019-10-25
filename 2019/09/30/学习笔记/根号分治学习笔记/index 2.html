@@ -68,18 +68,19 @@
     })();
 </script>
 
-  <meta name="description" content="这里记录一下我的小技巧，以及我做题过程中的出锅记录。">
+  <meta name="description" content="有一类问题，有两种做法：一种是$O(n)$回答$m$个询问；或者$O(n^2)$预处理，然后$O(1)$回答。无论哪种方法，复杂度都是$O(n^2)$的。 此时可以考虑一种折中的办法——根号分治。">
+<meta name="keywords" content="根号分治">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小技巧&#x2F;出锅记录">
-<meta property="og:url" content="http://denny-qi.github.io/2019/08/09/小技巧:出锅记录/index.html">
+<meta property="og:title" content="「根号分治」学习笔记">
+<meta property="og:url" content="http://denny-qi.github.io/2019/09/30/学习笔记/根号分治学习笔记/index.html">
 <meta property="og:site_name" content="DennyQi&#39;s Site">
-<meta property="og:description" content="这里记录一下我的小技巧，以及我做题过程中的出锅记录。">
+<meta property="og:description" content="有一类问题，有两种做法：一种是$O(n)$回答$m$个询问；或者$O(n^2)$预处理，然后$O(1)$回答。无论哪种方法，复杂度都是$O(n^2)$的。 此时可以考虑一种折中的办法——根号分治。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-22T04:40:20.828Z">
+<meta property="og:updated_time" content="2019-10-01T11:50:42.335Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小技巧&#x2F;出锅记录">
-<meta name="twitter:description" content="这里记录一下我的小技巧，以及我做题过程中的出锅记录。">
-  <link rel="canonical" href="http://denny-qi.github.io/2019/08/09/小技巧:出锅记录/">
+<meta name="twitter:title" content="「根号分治」学习笔记">
+<meta name="twitter:description" content="有一类问题，有两种做法：一种是$O(n)$回答$m$个询问；或者$O(n^2)$预处理，然后$O(1)$回答。无论哪种方法，复杂度都是$O(n^2)$的。 此时可以考虑一种折中的办法——根号分治。">
+  <link rel="canonical" href="http://denny-qi.github.io/2019/09/30/学习笔记/根号分治学习笔记/">
 
 
 <script id="page-configurations">
@@ -93,7 +94,7 @@
   };
 </script>
 
-  <title>小技巧/出锅记录 | DennyQi's Site</title>
+  <title>「根号分治」学习笔记 | DennyQi's Site</title>
   
 
 
@@ -232,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://denny-qi.github.io/2019/08/09/小技巧:出锅记录/">
+    <link itemprop="mainEntityOfPage" href="http://denny-qi.github.io/2019/09/30/学习笔记/根号分治学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DennyQi">
@@ -246,7 +247,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">小技巧/出锅记录
+          <h1 class="post-title" itemprop="name headline">「根号分治」学习笔记
 
             
           </h1>
@@ -254,9 +255,6 @@
 
         <div class="post-meta">
             
-        <i class="fa fa-thumb-tack"></i>
-        <span class="post-meta-divider">|</span>
-    
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -267,7 +265,7 @@
                 
               
 
-              <time title="Created: 2019-08-09 12:30:26" itemprop="dateCreated datePublished" datetime="2019-08-09T12:30:26+08:00">2019-08-09</time>
+              <time title="Created: 2019-09-30 10:51:47" itemprop="dateCreated datePublished" datetime="2019-09-30T10:51:47+08:00">2019-09-30</time>
             </span>
           
             <span class="post-meta-item">
@@ -276,14 +274,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/小技巧/" itemprop="url" rel="index"><span itemprop="name">小技巧</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/小技巧/出锅记录/" itemprop="url" rel="index"><span itemprop="name">出锅记录</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
 
                 
                 
@@ -302,46 +293,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <script src=/js/crypto-js.js></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">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</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
+        <p>有一类问题，有两种做法：一种是$O(n)$回答$m$个询问；或者$O(n^2)$预处理，然后$O(1)$回答。无论哪种方法，复杂度都是$O(n^2)$的。</p>
+<p>此时可以考虑一种折中的办法——根号分治。</p>
+<a id="more"></a>
+<h1 id="根号算法"><a href="#根号算法" class="headerlink" title="根号算法"></a>根号算法</h1><p>其实我们常用的根号算法都可以算是根号分治。</p>
+<h2 id="分块"><a href="#分块" class="headerlink" title="分块"></a>分块</h2><p>在一些难以用$\log$数据结构维护的情况下，常常使用的一种方法是分块。我们假设将序列分为长度为$\sqrt n$的块。一个询问区间可以看成由若干个块组成，同时两端有若干不完整块。对于完整的块我们对于每个块整体回答，对于不完整块则暴力回答。因为完整块最多$\sqrt{n}$个，不完整块内最多不可能超过$2\sqrt n$个。因此每个询问就能$O(\sqrt{n})$解答了。复杂度$O(n \sqrt n)$。</p>
+<p>至于为什么选择$\sqrt n$作为阈值，因为$a+b \geq 2\sqrt{ab}$（均值不等式），因此$\sqrt n$就是一个最好的折中办法。</p>
+<h2 id="莫队"><a href="#莫队" class="headerlink" title="莫队"></a>莫队</h2><p>分块是在线算法。对于复杂的区间询问问题，有时不好处理。此时考虑离线，将询问按照一定方法排序。在得到一个询问的答案后，逐位挪动区间，同时更新答案，直到到达下一个询问区间……</p>
+<p>复杂度的瓶颈就在于用什么方法排序能使<strong>询问区间的挪动次数</strong>尽量少。</p>
+<p>依然将序列分块，设块的大小为$B$。将所有询问按以下规则排序：</p>
+<blockquote>
+<p>第一关键字：左端点块编号<br>第二关键字：右端点块编号<br>第三关键字：右端点编号</p>
+</blockquote>
+<p>当前后询问区间左端点都在同一块内时，左端点的移动距离最多为$B$。整个过程中左端点会出现换块的情况，而换块时移动的总距离不超过$n$，可以不计。因此左端点总共移动$nB$次。(假设询问次数与序列长度同阶)</p>
+<p>当左端点在同一块中时，右端点的排列是单调的。因此右端点移动的总距离为$n \times \dfrac{n}{B}$。</p>
+<p>因此总的复杂度是$O(nB+\dfrac{n^2}{B})$。这是一个关于$B$的打钩函数，因此$B$取$\sqrt n$时最优。</p>
+<h3 id="带修莫队"><a href="#带修莫队" class="headerlink" title="带修莫队"></a>带修莫队</h3><p>我们对于每一个区间需要三维：左端点，右端点，时间。</p>
+<p>修改一下排序规则：</p>
+<blockquote>
+<p>第一关键字：左端点块编号<br>第二关键字：右端点块编号<br>第三关键字：时间</p>
+</blockquote>
+<p>记得时间倒退的时候要把原来的修改的改回去，一个很妙的操作就是<strong>交换</strong>原值和修改值。</p>
+<p>分析时间复杂度：（设$n,m$同阶）</p>
+<p>左端点的移动次数是不变的，是$O(nB)$；右端点块内的移动也是$O(nB)$，块间移动$O(\dfrac{n^2}{B})$。时间指针的复杂度是$O(n \times (\dfrac{n}{B})^2)$。总复杂度为$O(\dfrac{n^3}{B^2}+nB+\dfrac{n^2}{B})$。</p>
+<p>设$y=\dfrac{n^3}{B^2}+nB+\dfrac{n^2}{B}$，则$\dfrac{y}{n}=\dfrac{n^2}{B^2}+B+\dfrac{n}{B}$</p>
+<p>此时可以换元，设$t=\dfrac{n}{B}$，则$\dfrac{y}{n}=t^2+\dfrac{n}{t}+t$</p>
+<p>由于当$\lim_{t\rightarrow \infty}$时，$t^2$为$t$的高阶，因此$\dfrac{y}{n} \approx t^2+\dfrac{n}{t}$</p>
+<p>$<br>t^2+ \dfrac{n}{t} = t^2 + \dfrac{n}{2t}+\dfrac{n}{2t} \geq 3 \sqrt[3]{t^2 \ast \dfrac{n}{2t} \ast \dfrac{n}{2t}}=3\sqrt[3]{\dfrac{n^2}{4}}<br>$<br>因此块应取$O(n^{\frac{2}{3}})$，复杂度为$O(n^{\frac{5}{3}})$</p>
+<h1 id="其他根号分治例题"><a href="#其他根号分治例题" class="headerlink" title="其他根号分治例题"></a>其他根号分治例题</h1><blockquote>
+<p>给出一张无向图，每次可以将一个点及其所有相邻点加上一个值，也可以单点询问权值。$n \leq 10^5$。</p>
+</blockquote>
+<p>朴素的有两种做法：（以下设$n,m$同阶，$n$可代表$m$）</p>
+<p>一，每次直接做出对应修改（最坏情况下$O(n)$），询问时$O(1)$。复杂度$O(n^2)$。</p>
+<p>二，每次在修改的点上打标记，$O(1)$。询问时遍历所有相邻点累计，$O(n)$。复杂度也是$O(n^2)$。</p>
+<p>选择根号分治——修改时，如果这个点的度小于$\sqrt n$，那么暴力给它相邻的点进行修改，否则打标记。询问时，看似好像最坏是$O(n)$的，而事实上，最多只有$\sqrt n$个点时度超过$\sqrt n$的，即最多只有$\sqrt n$个点上有标记需要累加，其余都是已经累加的。因此考虑将一个点对应的邻接表按照度从大到小排序，就能够$O(\sqrt n)$完成询问了。</p>
+<blockquote>
+<p>给出$n$个数，单点修改，询问所有下标模$p$为$k$的元素和。</p>
+</blockquote>
+<p>对模数进行根号分治。模数小于$p$的预处理在数组中，大于等于$p$的暴力统计。修改时直接修改掉原值，并且在其对应的数组中修改即可。</p>
+
     </div>
 
     
@@ -349,10 +339,16 @@ doDecrypt(passwd, onError);
     
 
     <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/根号分治/" rel="tag"><i class="fa fa-tag"></i>根号分治</a>
+          
+        </div>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/08/07/学习笔记/数论函数学习笔记/" rel="next" title="「数论函数」学习笔记">
-                <i class="fa fa-chevron-left"></i> 「数论函数」学习笔记
+              <a href="/2019/08/22/好题记录/" rel="next" title="好题记录">
+                <i class="fa fa-chevron-left"></i> 好题记录
               </a>
             
           </div>
@@ -360,8 +356,8 @@ doDecrypt(passwd, onError);
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/08/09/学习笔记/网络流学习笔记/" rel="prev" title="「网络流」学习笔记">
-                「网络流」学习笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/01/题解/洛谷4438道路/" rel="prev" title="「HNOI/AHOI2018」道路">
+                「HNOI/AHOI2018」道路 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -393,8 +389,17 @@ doDecrypt(passwd, onError);
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -526,6 +531,23 @@ doDecrypt(passwd, onError);
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#根号算法"><span class="nav-number">1.</span> <span class="nav-text">根号算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分块"><span class="nav-number">1.1.</span> <span class="nav-text">分块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫队"><span class="nav-number">1.2.</span> <span class="nav-text">莫队</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#带修莫队"><span class="nav-number">1.2.1.</span> <span class="nav-text">带修莫队</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他根号分治例题"><span class="nav-number">2.</span> <span class="nav-text">其他根号分治例题</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
         <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
           
