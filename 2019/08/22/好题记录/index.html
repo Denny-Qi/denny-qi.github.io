@@ -75,7 +75,7 @@
 <meta property="og:site_name" content="DennyQi&#39;s Site">
 <meta property="og:description" content="记录一下做过的好题吧~">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-25T06:47:51.201Z">
+<meta property="og:updated_time" content="2019-10-25T14:24:32.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="好题记录">
 <meta name="twitter:description" content="记录一下做过的好题吧~">
@@ -295,11 +295,10 @@
         <p>记录一下做过的好题吧~</p>
 <a id="more"></a>
 <h1 id="2019-6"><a href="#2019-6" class="headerlink" title="2019.6"></a>2019.6</h1><h2 id="Codeforces-1166C-A-Tale-of-Two-Lands"><a href="#Codeforces-1166C-A-Tale-of-Two-Lands" class="headerlink" title="Codeforces 1166C A Tale of Two Lands"></a>Codeforces 1166C A Tale of Two Lands</h2><blockquote>
-<p>【绝对值问题】给定一个数列，求其中满足$min{|x+y|,|x-y|} \leq min{|x|,|y|}$且$max{|x|,|y|} \leq max{|x+y|,|x-y|}$的数对$(x,y)$个数。</p>
+<p>【绝对值问题】给定一个数列，求其中满足$min\{|x+y|,|x-y|\} \leq min\{|x|,|y|\}$且$max\{|x|,|y|\} \leq max\{|x+y|,|x-y|\}$的数对$(x,y)$个数。<br>$n \leq 2 \times 10^5$</p>
 </blockquote>
-<p>$x,y$的符号都需要分类讨论，好像有点复杂。事后明白了符号在这道题里是不影响的。</p>
-<p>我们可以这样来考虑。对于两个正数$x,y(x&lt;y)$，如果仅改变符号不会影响$|x+y|$和$|x-y|$的值，那么我们就不用考虑符号。那么我们只需要证明$(x,y)$和$(-x,y)$达成的值一样就可以了。这样的话，一旦$(x,y)$成立，则$(-x,y)$与$(x,-y)$也成立，则$(-x,-y)$成立。即一旦$(x,y)$成立，则$(|x|,|y|)$成立。这个证明起来也容易。当数对为$(x,y)$时，$|x+y|=x+y$，$|x-y|=y-x$。当数对为$(-x,y)$时，$|-x+y|=y-x$，$|-x-y|=x+y$。故证明成立。</p>
-<p>很多时候这种数学的证明不要刻意去分类讨论。因为$(x,y)$和$(y,x)$是等价的，因此只要证明其中一种就可以了。</p>
+<p>如果去分类讨论$x,y$的符号会把问题变得非常复杂。观察这个条件，发现这个条件是与$(x,y)$的符号无关的。也就是说如果将所有数都取一个绝对值不会影响答案。</p>
+<p>只需要考虑非负数的情况，题目就很简单了。</p>
 <h2 id="AtCoder-Beginner-Contest-126-D-Even-Relation"><a href="#AtCoder-Beginner-Contest-126-D-Even-Relation" class="headerlink" title="AtCoder Beginner Contest 126 D. Even Relation"></a>AtCoder Beginner Contest 126 D. Even Relation</h2><blockquote>
 <p>【树上奇偶性问题】要求给一棵树上的节点染色（0/1），要求如果有两个节点颜色相同，则其间距离为偶数。</p>
 </blockquote>
