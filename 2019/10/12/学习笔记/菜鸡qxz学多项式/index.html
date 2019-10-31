@@ -75,7 +75,7 @@
 <meta property="og:site_name" content="DennyQi&#39;s Site">
 <meta property="og:description" content="只有多项式乘法……">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-25T13:18:56.471Z">
+<meta property="og:updated_time" content="2019-10-25T13:18:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="菜鸡qxz学多项式">
 <meta name="twitter:description" content="只有多项式乘法……">
@@ -294,31 +294,41 @@
       
         <p>只有多项式乘法……</p>
 <a id="more"></a>
+
 <h1 id="多项式乘法"><a href="#多项式乘法" class="headerlink" title="多项式乘法"></a>多项式乘法</h1><p>已知两个多项式的系数表达式，求其乘积的系数表达式。</p>
-<script type="math/tex; mode=display">c_n = \sum\limits_{i=0}^{n}a_ib_{n-i}</script><h2 id="FFT"><a href="#FFT" class="headerlink" title="FFT"></a>FFT</h2><p>系数表达式逐项相乘，复杂度$O(n^2)$，而点值表达式相乘复杂度为$O(n)$。因此我们要快速地将两个多项式转化为点值表达式，完成点值表达式的乘法，然后转为系数表达式得到结果。表达式转换的过程分别是离散傅里叶变换($DFT$)和离散傅里叶逆变换($IDFT$)。这两个过程统称为快速傅里叶变换($FFT$)。</p>
+<p>$$c_n = \sum\limits_{i=0}^{n}a_ib_{n-i}$$</p>
+<h2 id="FFT"><a href="#FFT" class="headerlink" title="FFT"></a>FFT</h2><p>系数表达式逐项相乘，复杂度$O(n^2)$，而点值表达式相乘复杂度为$O(n)$。因此我们要快速地将两个多项式转化为点值表达式，完成点值表达式的乘法，然后转为系数表达式得到结果。表达式转换的过程分别是离散傅里叶变换($DFT$)和离散傅里叶逆变换($IDFT$)。这两个过程统称为快速傅里叶变换($FFT$)。</p>
 <h2 id="离散傅里叶变换-DFT"><a href="#离散傅里叶变换-DFT" class="headerlink" title="离散傅里叶变换(DFT)"></a>离散傅里叶变换(DFT)</h2><p>目标：快速求得系数表达式对应的点值表达式。</p>
 <p>设有多项式</p>
-<script type="math/tex; mode=display">A(x)=a_0+a_1x+a_2x^2+...+a_{n-1}x^{n-1}</script><p>其中$n$为2的幂，不足则补0。我们按照其指数的奇偶将其分为两部分，变成两个新多项式。</p>
-<script type="math/tex; mode=display">A_1(x)=a_0+a_2x+...+a_{n-2}x^{\frac{n}{2}-1}</script><script type="math/tex; mode=display">A_2(x)=a_1+a_3x+...+a_{n-1}x^{\frac{n}{2}-1}</script><p>则有$A(x)=A_1(x^2)+xA_2(x^2)$</p>
+<p>$$A(x)=a_0+a_1x+a_2x^2+…+a_{n-1}x^{n-1}$$</p>
+<p>其中$n$为2的幂，不足则补0。我们按照其指数的奇偶将其分为两部分，变成两个新多项式。</p>
+<p>$$A_1(x)=a_0+a_2x+…+a_{n-2}x^{\frac{n}{2}-1}$$</p>
+<p>$$A_2(x)=a_1+a_3x+…+a_{n-1}x^{\frac{n}{2}-1}$$</p>
+<p>则有$A(x)=A_1(x^2)+xA_2(x^2)$</p>
 <blockquote>
 <p><strong>单位根</strong><br>在复平面内以原点为圆心，半径为1的圆称为单位圆。以$(1,0)$为起点，将单位圆$n$等分，这些等分点是$n$个单位根。记第一个单位根为$\omega_n$，根据复数相乘模长相乘，幅角相加的原则，第$k$个单位根记作$\omega_n^k$。<br>根据三角函数推得单位根的表示方法：$\omega_n^k=cos\frac{2k\pi}{n}+isin\frac{2k\pi}{n}$<br>定理一（相消定理，折半引理）：$\omega_{d<em>n}^{d</em>k}=\omega_n^k,\omega_n^k=\omega_{\frac{n}{2}}^{\frac{k}{2}}$<br>定理二：$\omega_n^k=-\omega_n^{k+\frac{n}{2}}$ </p>
 </blockquote>
 <p>我们选择将单位根带入这两个子多项式求点值。</p>
-<p>设$k&lt;\dfrac{n}{2}$，将任意$\omega_n^k$代入$A(x)$可得<script type="math/tex">A(\omega_n^k)=A_1(\omega_{\frac{n}{2}}^{k})+\omega_n^kA_2(\omega_{\frac{n}{2}}^k)</script></p>
-<p>将任意$\omega_n^{k+\frac{n}{2}}$代入$A(x)$可得<script type="math/tex">A(\omega_n^{k+\frac{n}{2}})=A_1(\omega_{\frac{n}{2}}^{k})-\omega_n^kA_2(\omega_{\frac{n}{2}}^k)</script></p>
+<p>设$k&lt;\dfrac{n}{2}$，将任意$\omega_n^k$代入$A(x)$可得$$A(\omega_n^k)=A_1(\omega_{\frac{n}{2}}^{k})+\omega_n^kA_2(\omega_{\frac{n}{2}}^k)$$</p>
+<p>将任意$\omega_n^{k+\frac{n}{2}}$代入$A(x)$可得$$A(\omega_n^{k+\frac{n}{2}})=A_1(\omega_{\frac{n}{2}}^{k})-\omega_n^kA_2(\omega_{\frac{n}{2}}^k)$$</p>
 <p>所以只要求出$A_1(\omega_{\frac{n}{2}}^{k})$和$A_2(\omega_{\frac{n}{2}}^k)$，就可以求得$A(\omega_n^k)$和$A(\omega_n^{k+\frac{n}{2}})$。也就是说，$k$只要取$[0,\frac{n}{2})$就可以得出另一半$[\frac{n}{2},n)$。因此就得到了整个区间$[0,n)$，也就求出了$A(x)$的点值表达式。</p>
 <p>递归求解即可，复杂度$O(n \log n)$</p>
 <h2 id="离散傅里叶逆变换-IDFT"><a href="#离散傅里叶逆变换-IDFT" class="headerlink" title="离散傅里叶逆变换(IDFT)"></a>离散傅里叶逆变换(IDFT)</h2><p>目标：将点值表达式转化回系数表达式</p>
 <p>设点值表达式乘法结果为$(y_0,y_1,…,y_{n-1})$。设它对应的系数表达式（答案）为$(a_0,a_1,…,a_{n-1})$</p>
 <p>我们构造一个以$(y_0,y_1,…,y_{n-1})$为<strong>系数</strong>的多项式</p>
-<script type="math/tex; mode=display">B(x)=y_0+y_1x+...+y_{n-1}x^{n-1}</script><p>此时多项式$B(x)$是系数表示的。我们依次将<strong>单位根的倒数</strong>（$\omega_n^0,\omega_n^{-1},…,\omega_n^{1-n}$）代入得到一个点值表达式$(z_0,z_1,…,z_{n-1})$。</p>
-<script type="math/tex; mode=display">\begin{aligned} z_k &= \sum_{i=0}^{n-1}y_i(\omega_n^{-k})^i\\ &= \sum_{i=0}^{n-1}(\sum_{j=0}^{n-1}a_j*\omega_n^{ij})(\omega_n^{-k})^i\\ &= \sum_{i=0}^{n-1}\sum_{j=0}^{n-1}a_j*(\omega_n^{j-k})^i\\ &= \sum_{i=0}^{n-1}a_j(\sum_{j=0}^{n-1}(\omega_n^{j-k})^i)\\ \end{aligned}</script><p>而因为后半部分$\sum_{j=0}^{n-1}(\omega_n^{j-k})^i$可由等比数列求和公式得：</p>
-<script type="math/tex; mode=display">\sum_{j=0}^{n-1}(\omega_n^{j-k})^i=\dfrac{(\omega_n^{j-k})^n-1}{\omega_n^{j-k}-1}</script><p>注意，要使此式有意义，需满足分母不为0。而当$j=k$时分母为0。因此分类讨论：</p>
+<p>$$B(x)=y_0+y_1x+…+y_{n-1}x^{n-1}$$</p>
+<p>此时多项式$B(x)$是系数表示的。我们依次将<strong>单位根的倒数</strong>（$\omega_n^0,\omega_n^{-1},…,\omega_n^{1-n}$）代入得到一个点值表达式$(z_0,z_1,…,z_{n-1})$。</p>
+<p>$$ \begin{aligned} z_k &amp;= \sum_{i=0}^{n-1}y_i(\omega_n^{-k})^i\ &amp;= \sum_{i=0}^{n-1}(\sum_{j=0}^{n-1}a_j<em>\omega_n^{ij})(\omega_n^{-k})^i\ &amp;= \sum_{i=0}^{n-1}\sum_{j=0}^{n-1}a_j</em>(\omega_n^{j-k})^i\ &amp;= \sum_{i=0}^{n-1}a_j(\sum_{j=0}^{n-1}(\omega_n^{j-k})^i)\ \end{aligned} $$ </p>
+<p>而因为后半部分$\sum_{j=0}^{n-1}(\omega_n^{j-k})^i$可由等比数列求和公式得：</p>
+<p>$$\sum_{j=0}^{n-1}(\omega_n^{j-k})^i=\dfrac{(\omega_n^{j-k})^n-1}{\omega_n^{j-k}-1}$$</p>
+<p>注意，要使此式有意义，需满足分母不为0。而当$j=k$时分母为0。因此分类讨论：</p>
 <p>当$j \neq k$时，$\sum_{j=0}^{n-1}(\omega_n^{j-k})^i=0$。</p>
 <p>当$j = k$时，$\sum_{j=0}^{n-1}(\omega_n^{j-k})^i=n$</p>
 <p>综上</p>
-<script type="math/tex; mode=display">z_k = \sum\limits_{i=0}^{n-1}a_j(\sum\limits_{j=0}^{n-1}(\omega_n^{j-k})^i) = na_k</script><p>所以</p>
-<script type="math/tex; mode=display">a_k=\dfrac{z_k}{n}</script><p>因此我们只需要把我们得到的点值表达式看做是系数表达式，再做一次$DFT$（其中单位根以倒数形式代入）就能够得到我们所要的结果了。最后还要除以$n$。</p>
+<p>$$z_k = \sum\limits_{i=0}^{n-1}a_j(\sum\limits_{j=0}^{n-1}(\omega_n^{j-k})^i) = na_k$$</p>
+<p>所以</p>
+<p>$$a_k=\dfrac{z_k}{n}$$</p>
+<p>因此我们只需要把我们得到的点值表达式看做是系数表达式，再做一次$DFT$（其中单位根以倒数形式代入）就能够得到我们所要的结果了。最后还要除以$n$。</p>
 <h2 id="迭代实现"><a href="#迭代实现" class="headerlink" title="迭代实现"></a><strong>迭代实现</strong></h2><p>刚才这样是通过递归实现的，常数较大。</p>
 <p>如果能事先确定叶节点的值，就可以直接向上合并了。之前系数是按照奇偶分左右的。第$i$层的分配看二进制的倒数第$i$位……因此系数的位置就是其初始位置的二进制倒序。</p>
 <p>当前这一轮我们需要利用两个点值$A_1(\omega_{\frac{n}{2}}^{k})$和$A_2(\omega_{\frac{n}{2}}^k)$，我们利用他们造出了$A(\omega_n^k)$并推出了$A(\omega_n^{k+\frac{n}{2}})$，恰好可以把它们保存到原来的位置。这就是所谓的“蝴蝶操作”。</p>
@@ -415,10 +425,6 @@
           
         
         
-        
-          
-        
-          
         
           
         

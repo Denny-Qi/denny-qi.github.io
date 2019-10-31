@@ -76,7 +76,7 @@
 <meta property="og:site_name" content="DennyQi&#39;s Site">
 <meta property="og:description" content="有一类问题，有两种做法：一种是$O(n)$回答$m$个询问；或者$O(n^2)$预处理，然后$O(1)$回答。无论哪种方法，复杂度都是$O(n^2)$的。 此时可以考虑一种折中的办法——根号分治。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-01T11:50:42.335Z">
+<meta property="og:updated_time" content="2019-10-01T11:50:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「根号分治」学习笔记">
 <meta name="twitter:description" content="有一类问题，有两种做法：一种是$O(n)$回答$m$个询问；或者$O(n^2)$预处理，然后$O(1)$回答。无论哪种方法，复杂度都是$O(n^2)$的。 此时可以考虑一种折中的办法——根号分治。">
@@ -296,6 +296,7 @@
         <p>有一类问题，有两种做法：一种是$O(n)$回答$m$个询问；或者$O(n^2)$预处理，然后$O(1)$回答。无论哪种方法，复杂度都是$O(n^2)$的。</p>
 <p>此时可以考虑一种折中的办法——根号分治。</p>
 <a id="more"></a>
+
 <h1 id="根号算法"><a href="#根号算法" class="headerlink" title="根号算法"></a>根号算法</h1><p>其实我们常用的根号算法都可以算是根号分治。</p>
 <h2 id="分块"><a href="#分块" class="headerlink" title="分块"></a>分块</h2><p>在一些难以用$\log$数据结构维护的情况下，常常使用的一种方法是分块。我们假设将序列分为长度为$\sqrt n$的块。一个询问区间可以看成由若干个块组成，同时两端有若干不完整块。对于完整的块我们对于每个块整体回答，对于不完整块则暴力回答。因为完整块最多$\sqrt{n}$个，不完整块内最多不可能超过$2\sqrt n$个。因此每个询问就能$O(\sqrt{n})$解答了。复杂度$O(n \sqrt n)$。</p>
 <p>至于为什么选择$\sqrt n$作为阈值，因为$a+b \geq 2\sqrt{ab}$（均值不等式），因此$\sqrt n$就是一个最好的折中办法。</p>
@@ -428,10 +429,6 @@
           
         
         
-        
-          
-        
-          
         
           
         

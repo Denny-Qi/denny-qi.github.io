@@ -80,7 +80,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/08/10/KexG9myD1hqzSAk.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/10/CxfL7EloiycShI5.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/10/MYWZX7IH2URGBLv.png">
-<meta property="og:updated_time" content="2019-08-11T00:00:02.469Z">
+<meta property="og:updated_time" content="2019-08-11T00:00:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「后缀数组」学习笔记">
 <meta name="twitter:description" content="后缀数组$(Suffix \ Array,SA)$是一个处理字符串问题非常有用的数据结构。其基于将字符串的所有后缀按照字典序排序（称为后缀排序），维护后缀之间的最长公共前缀，将许多字符串问题转化为区间的问题求解。">
@@ -300,6 +300,7 @@
       
         <p>后缀数组$(Suffix \ Array,SA)$是一个处理字符串问题非常有用的数据结构。其基于将字符串的所有后缀按照字典序排序（称为后缀排序），维护后缀之间的最长公共前缀，将许多字符串问题转化为区间的问题求解。</p>
 <a id="more"></a>
+
 <p>以下“后缀$i$”代表子串$S[i..n]$。</p>
 <h1 id="构造后缀数组"><a href="#构造后缀数组" class="headerlink" title="构造后缀数组"></a>构造后缀数组</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>后缀数组$sa_i$表示字典序从小到大排名为$i$的后缀的起始位置。</p>
 <p>定义空字符的字典序小于任何其他字符。</p>
@@ -316,6 +317,8 @@
 <p>至此$2^k$的$sa$就求完了，然而还需要处理出$x$以便下一轮求解。而我们依然需要利用当前$x$中的信息来求排名，因此就需要一个临时数组了。为了节省空间，我们发现$y$数组已经没用了，因此我们就把原来$x$的信息先存到$y$里面去。方法很简单：$swap(x,y)$交换指针即可。如果相同后缀排名可以不同，那直接用<code>x[sa[i]]=i</code>来做就可以了，而相等时排名要求严格相同,因此我们要增加一个判断——排名第$i$的二元组是否和排名第$i-1$的二元组的完全相同。也就是是否满足<code>y[sa[i]]==y[sa[i-1]]&amp;&amp;y[sa[i]+k]==y[sa[i-1]+k]</code>。</p>
 <p>当所有后缀都已经两两不同时，那么所有后缀的排名已经水落石出了，跳出循环即可。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">GetSA</span><span class="params">(<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) c[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) ++c[x[i] = s[i]];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) c[i] += c[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; --i) sa[c[x[i]]--] = i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k += k)&#123;</span><br><span class="line">        p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n-k+<span class="number">1</span>; i &lt;= n; ++i) y[++p] = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span>(sa[i] &gt; k) y[++p] = sa[i]-k;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) c[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) ++c[x[i]];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) c[i] += c[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; --i) sa[c[x[y[i]]]--] = y[i], y[i] = <span class="number">0</span>;</span><br><span class="line">        swap(x,y);</span><br><span class="line">        x[sa[<span class="number">1</span>]] = <span class="number">1</span>, p = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) x[sa[i]] = (y[sa[i]]==y[sa[i<span class="number">-1</span>]] &amp;&amp; y[sa[i]+k]==y[sa[i<span class="number">-1</span>]+k]) ? p : ++p;</span><br><span class="line">        <span class="keyword">if</span>(p &gt;= n) <span class="keyword">break</span>;</span><br><span class="line">        m = p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h1 id="最长公共前缀"><a href="#最长公共前缀" class="headerlink" title="最长公共前缀"></a>最长公共前缀</h1><p>后缀数组在解决问题的时候几乎都要求一个最长公共前缀$（Longest Common Prefix,LCP）$。</p>
 <p>后缀数组将一个字符串所有的后缀处理好，那么后缀之间的前缀关系就非常重要。比如说经典的字符串匹配问题（$KMP$可以$O(n)$解决），如果用后缀数组来做，我们就要把文本串和模式串<strong>接在一起</strong>（模式串接在后面），然后整个做后缀排序。匹配即找与模式串相等的子串，等价于在大串的所有后缀中寻找一个后缀，使得它与模式串（也是一个后缀）的$LCP$长度等于模式串长度。</p>
 <p>而后缀排序后相同的前缀肯定排在一起。因此很多时候通过$LCP$，字符串的问题能够转化为区间问题，因此线段树、莫队等数据结构就有了用武之地。</p>
@@ -331,10 +334,11 @@
 <p>后缀$i$相对于后缀$i-1$只少了第一个字符。而既然肯定的是后缀$k+1$与后缀$i$的$LCP$为$height_{rnk_{i-1}}-1$，那么$LCP(p,i)$的长度至少会等于$height_{rnk_{i-1}}-1$。因此有$height_{rnk_{i}} \geq height_{rnk_{i-1}}-1$。</p>
 <p>而接下来多出的部分暴力匹配过去即可。因为我们的$height$近乎于单调递增（每次只减$1$），也就保证了求$height$数组的复杂度是近似为$O(n)$的。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">GetHeight</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) rnk[sa[i]] = i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(k) --k;</span><br><span class="line">        <span class="keyword">while</span>(s[i+k] == s[sa[rnk[i]<span class="number">-1</span>]+k]) ++k;</span><br><span class="line">        height[rnk[i]] = k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="POJ-2774-Long-Long-Message"><a href="#POJ-2774-Long-Long-Message" class="headerlink" title="POJ 2774 Long Long Message"></a>POJ 2774 Long Long Message</h2><blockquote>
 <p>给出两个字符串（$n \leq 10^4$），求两者的最长公共子串（连续）</p>
 </blockquote>
-<p>将两个字符串拼接在一起，求出$\max\{height_i\}$就是答案，注意要满足两个后缀的要分别存在于各自的字符串内。</p>
+<p>将两个字符串拼接在一起，求出$\max{height_i}$就是答案，注意要满足两个后缀的要分别存在于各自的字符串内。</p>
 <h2 id="Luogu-2852-Milk-Patterns"><a href="#Luogu-2852-Milk-Patterns" class="headerlink" title="Luogu 2852 Milk Patterns"></a>Luogu 2852 Milk Patterns</h2><blockquote>
 <p>给出一个字符串，求出其中至少出现$k$次的最长子串。（$1 \leq n,k \leq 2 \cdot 10^4$）</p>
 </blockquote>
@@ -455,10 +459,6 @@
           
         
         
-        
-          
-        
-          
         
           
         

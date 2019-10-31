@@ -76,7 +76,7 @@
 <meta property="og:site_name" content="DennyQi&#39;s Site">
 <meta property="og:description" content="Description机器人的手臂有$n$节。刚开始长度均为1，顺次相连排在$x$轴上。进行$m$次操作，操作一为将某一节手臂沿原方向伸长$l$，操作二为将某一节手臂旋转$t$度（后面的手臂会跟着旋转）。每次操作后询问最后一节手臂末尾点坐标。 $n \leq 3 \cdot 10^5$">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-04T01:29:16.800Z">
+<meta property="og:updated_time" content="2019-10-04T01:29:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces 618 E. Robot Arm">
 <meta name="twitter:description" content="Description机器人的手臂有$n$节。刚开始长度均为1，顺次相连排在$x$轴上。进行$m$次操作，操作一为将某一节手臂沿原方向伸长$l$，操作二为将某一节手臂旋转$t$度（后面的手臂会跟着旋转）。每次操作后询问最后一节手臂末尾点坐标。 $n \leq 3 \cdot 10^5$">
@@ -296,6 +296,7 @@
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>机器人的手臂有$n$节。刚开始长度均为1，顺次相连排在$x$轴上。进行$m$次操作，操作一为将某一节手臂沿原方向伸长$l$，操作二为将某一节手臂旋转$t$度（后面的手臂会跟着旋转）。每次操作后询问最后一节手臂末尾点坐标。</p>
 <p>$n \leq 3 \cdot 10^5$</p>
 <a id="more"></a>
+
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>将每一节手臂看做一个向量，那么题目就是要我们动态维护向量和。</p>
 <p>每一个向量我们维护模长和幅角，伸长操作即单点更新模长，旋转操作即区间更新幅角。可以用线段树来维护，遵循向量加法法则来合并即可。</p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>被卡精度了= =。最后用<code>long double</code>强行艹了过去。</p>
@@ -399,10 +400,6 @@
           
         
         
-        
-          
-        
-          
         
           
         
