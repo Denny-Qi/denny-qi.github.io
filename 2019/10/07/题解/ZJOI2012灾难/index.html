@@ -296,7 +296,6 @@
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给出一张食物网（$DAG$）。其中一个节点灭绝当且仅当所有指向它的点灭绝。输出$n$个数分别表示当点$i$灭绝时将导致多少别的点灭绝。</p>
 <p>$n \leq 65534$。</p>
 <a id="more"></a>
-
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>对于每一个点都做一次拓扑排序就可以解决了，但是复杂度是$O(n^2)$。</p>
 <p>试想如果给出的$DAG$恰好是一棵树那就简单了。答案就是子树大小。事实上最终答案一定可以表示为树的形式，树的本质就是父子之间的关系——那么在这道题中就表示祖先灭绝则其后代全部灭绝。</p>
 <p>我们考虑按照拓扑序把这棵树建出来。那么新加入一个点的时候之前的树已经建好了。哪些点灭绝能导致这个新点灭绝？是所有指向这个新点的点在树上的<strong>公共祖先</strong>。因此这个新点应该作为<strong>最近公共祖先</strong>的直接儿子。这个过程用倍增维护一下$LCA$即可。最后统计一下各点子树大小。复杂度$O(m \log n)$。</p>

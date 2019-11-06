@@ -295,46 +295,62 @@
       
         <p>数论中有关整除、同余的理论。包括$gcd$与$exgcd$，费马小定理，欧拉定理，（扩展）中国剩余定理等。</p>
 <a id="more"></a>
-
-<h1 id="欧几里得算法-GCD"><a href="#欧几里得算法-GCD" class="headerlink" title="欧几里得算法(GCD)"></a>欧几里得算法(GCD)</h1><p>$gcd(a,b) = gcd(b, a % b)$</p>
+<h1 id="欧几里得算法-GCD"><a href="#欧几里得算法-GCD" class="headerlink" title="欧几里得算法(GCD)"></a>欧几里得算法(GCD)</h1><p>$gcd(a,b) = gcd(b, a \% b)$</p>
 <h1 id="扩展欧几里得算法-EXGCD"><a href="#扩展欧几里得算法-EXGCD" class="headerlink" title="扩展欧几里得算法(EXGCD)"></a>扩展欧几里得算法(EXGCD)</h1><p>求不定方程：$ ax + by = gcd(a,b) $ </p>
 <h2 id="求特解"><a href="#求特解" class="headerlink" title="求特解"></a>求特解</h2><p>当$b = 0$时，$gcd(a,0) = a$，故解得$x = 1, y = 0$</p>
 <p>设：</p>
-<p>$$<br>\begin{cases}<br>ax_1 + by_1 = gcd(a,b) \<br>bx_2 + (a%b)y_2 = gcd(b,a%b) \end{cases}<br>$$</p>
-<p>因为$gcd(a,b) = gcd(b, a%b)$，所以：<br>$$<br>\begin{aligned}<br>ax_1 + by_1<br>&amp;= bx_2 + (a%b)y_2 \<br>&amp;= bx_2 + (a - \left \lfloor a / b \right \rfloor<em>b)y_2  \<br>&amp;= bx_2 + ay_2 - \left \lfloor a / b \right \rfloor</em>by_2 \<br>&amp;= ay_2 + b(x_2 - \left \lfloor a / b \right \rfloor y_2)<br>\end{aligned}<br>$$</p>
-<p>因此$$ax_1 + by_1 = ay_2 + b(x_2 - \left \lfloor a / b \right \rfloor y_2)$$</p>
-<p>特解：<br>$$<br>\begin{cases} x_1 = y_2 \<br>y_1 = x_2 - \left \lfloor a / b \right \rfloor * y_2 \<br>\end{cases}<br>$$</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> &amp;g, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">        g = a; x = <span class="number">1</span>, y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    exgcd(b,a%b,g,y,x);</span><br><span class="line">    y -= x*(a/b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+<script type="math/tex; mode=display">
+\begin{cases}
+ax_1 + by_1 = gcd(a,b) \\
+bx_2 + (a\%b)y_2 = gcd(b,a\%b) \end{cases}</script><p>因为$gcd(a,b) = gcd(b, a\%b)$，所以：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+ax_1 + by_1 
+&= bx_2 + (a\%b)y_2 \\
+&= bx_2 + (a - \left \lfloor a / b \right \rfloor*b)y_2  \\
+&= bx_2 + ay_2 - \left \lfloor a / b \right \rfloor*by_2 \\
+&= ay_2 + b(x_2 - \left \lfloor a / b \right \rfloor y_2)
+\end{aligned}</script><p>因此<script type="math/tex">ax_1 + by_1 = ay_2 + b(x_2 - \left \lfloor a / b \right \rfloor y_2)</script></p>
+<p>特解：</p>
+<script type="math/tex; mode=display">
+\begin{cases} x_1 = y_2 \\
+y_1 = x_2 - \left \lfloor a / b \right \rfloor * y_2 \\
+\end{cases}</script><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> &amp;g, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">        g = a; x = <span class="number">1</span>, y = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    exgcd(b,a%b,g,y,x);</span><br><span class="line">    y -= x*(a/b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="求通解"><a href="#求通解" class="headerlink" title="求通解"></a>求通解</h2><p>设$ k_1 = a / gcd(a,b) , k_2 =  b / gcd(a,b) $ 。$k_1, k_2$一定互质</p>
 <p>在原方程两边同时除以$gcd(a,b)$，得$ax / gcd(a,b) + by / gcd(a,b) = 1$，即$ k_1x + k_2y = 1 $</p>
-<p>显然其他解相对于特解，$x, y$的大小变化相反。设$x$增大$d_1$，$y$减小$d_2$, 可得$$k_1(x + d_1) + k_2(y - d_2) = 1$$</p>
-<p>由于$k_1x + k_2y = 1$, 所以$$k_1d_1 =  k_2d_2$$</p>
-<p>由于(k_1, k_2)互质，故$$d_1 = k_2, d_2 = k_1$$</p>
-<p>故解得通解为$$ (x + k \ast \left \lfloor b / gcd(a,b) \right \rfloor, y - k \ast \left \lfloor a / gcd(a,b) \right \rfloor) $$</p>
+<p>显然其他解相对于特解，$x, y$的大小变化相反。设$x$增大$d_1$，$y$减小$d_2$, 可得<script type="math/tex">k_1(x + d_1) + k_2(y - d_2) = 1</script></p>
+<p>由于$k_1x + k_2y = 1$, 所以<script type="math/tex">k_1d_1 =  k_2d_2</script></p>
+<p>由于(k_1, k_2)互质，故<script type="math/tex">d_1 = k_2, d_2 = k_1</script></p>
+<p>故解得通解为<script type="math/tex">(x + k \ast \left \lfloor b / gcd(a,b) \right \rfloor, y - k \ast \left \lfloor a / gcd(a,b) \right \rfloor)</script></p>
 <h2 id="求线性不定方程"><a href="#求线性不定方程" class="headerlink" title="求线性不定方程"></a>求线性不定方程</h2><p>求$ax + by = c$</p>
 <h3 id="裴蜀定理"><a href="#裴蜀定理" class="headerlink" title="裴蜀定理"></a>裴蜀定理</h3><p>$ax+by=c$有解当且仅当$gcd(a,b)|c$</p>
-<h3 id="求特解-1"><a href="#求特解-1" class="headerlink" title="求特解"></a>求特解</h3><p>扩大 $c / gcd(a,b)$ 倍即可。即：<br>$$ \begin{cases} x’ = x * c / gcd(a,b) \ y’ = y * c / gcd(a,b) \end{cases} $$</p>
-<h3 id="求最小正整数解"><a href="#求最小正整数解" class="headerlink" title="求最小正整数解"></a>求最小正整数解</h3><p>由于$x$的通解是$x + k * b / gcd(a,b)$。最小正整数解直接让特解模$b / gcd(a,b)$取正的值即可。</p>
+<h3 id="求特解-1"><a href="#求特解-1" class="headerlink" title="求特解"></a>求特解</h3><p>扩大 $c / gcd(a,b)$ 倍即可。即：</p>
+<script type="math/tex; mode=display">\begin{cases} x' = x * c / gcd(a,b) \\ y' = y * c / gcd(a,b) \end{cases}</script><h3 id="求最小正整数解"><a href="#求最小正整数解" class="headerlink" title="求最小正整数解"></a>求最小正整数解</h3><p>由于$x$的通解是$x + k * b / gcd(a,b)$。最小正整数解直接让特解模$b / gcd(a,b)$取正的值即可。</p>
 <h2 id="求线性同余方程"><a href="#求线性同余方程" class="headerlink" title="求线性同余方程"></a>求线性同余方程</h2><p>求$ax≡b\ (mod\ m)$</p>
 <p>等价于$ ax + my = b $， 求不定方程即可。</p>
 <h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>以上两个例子告诉我们，当存在一个不定系数$k$时，<strong>等式和同余式是可以相互转化的</strong>。</p>
 <h1 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h1><p>当$P$为质数时，对正整数$a$有</p>
-<p>$$a^{P-1} \equiv 1 \pmod P$$</p>
-<h1 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h1><p>欧拉定理将费马小定理推广到了$P$不会质数的情况。</p>
-<p>$$a^{\varphi(P)} \equiv 1 \pmod P, a \perp P$$</p>
-<h1 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h1><p>如果两个整数$a,b$满足$ab \equiv 1 \pmod P$，则称$b$是$a$在模$P$意义下的乘法逆元（反之亦然）。</p>
+<script type="math/tex; mode=display">a^{P-1} \equiv 1 \pmod P</script><h1 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h1><p>欧拉定理将费马小定理推广到了$P$不会质数的情况。</p>
+<script type="math/tex; mode=display">a^{\varphi(P)} \equiv 1 \pmod P, a \perp P</script><h1 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h1><p>如果两个整数$a,b$满足$ab \equiv 1 \pmod P$，则称$b$是$a$在模$P$意义下的乘法逆元（反之亦然）。</p>
 <p>乘法逆元可以直接用$exgcd$求解同余方程，或者使用欧拉定理。</p>
 <p>线性递推求逆元：</p>
-<p>设$P = k \ast i + r$，有$$k * i + r ≡ 0 \pmod P$$。记为$a^{-1}$或$inv(a)$</p>
-<p>两边同时乘以$i^{-1} * r^{-1}$可得<br>$$<br>\begin{aligned}<br>k * i * i^{-1} * r ^ {-1} + r * i^{-1} * r^{-1} ≡ 0 \pmod P \<br>k * r^{-1} + i^{-1} ≡ 0 \pmod P \<br>i^{-1} ≡ -\left \lfloor \dfrac{p}{i} \right \rfloor * (p % i)^{-1} \pmod P \<br>\end{aligned}<br>$$</p>
-<h1 id="扩展中国剩余定理-EXCRT"><a href="#扩展中国剩余定理-EXCRT" class="headerlink" title="扩展中国剩余定理(EXCRT)"></a>扩展中国剩余定理(EXCRT)</h1><p>求同余方程组：</p>
-<p>$$<br>\left { \begin{matrix}<br>x ≡ a_1 \pmod {m_1} \<br>x ≡ a_2 \pmod {m_2} \<br>\cdots \<br>x ≡ a_r \pmod {m_r} \<br>\end{matrix}\right.<br>$$</p>
-<p>这里不介绍中国剩余定理，因为扩展中国剩余定理的功能完全包含它。</p>
+<p>设$P = k \ast i + r$，有<script type="math/tex">k * i + r ≡ 0 \pmod P</script>。记为$a^{-1}$或$inv(a)$</p>
+<p>两边同时乘以$i^{-1} * r^{-1}$可得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+k * i * i^{-1} * r ^ {-1} + r * i^{-1} * r^{-1} ≡ 0 \pmod P \\
+k * r^{-1} + i^{-1} ≡ 0 \pmod P \\ 
+i^{-1} ≡ -\left \lfloor \dfrac{p}{i} \right \rfloor * (p \% i)^{-1} \pmod P \\
+\end{aligned}</script><h1 id="扩展中国剩余定理-EXCRT"><a href="#扩展中国剩余定理-EXCRT" class="headerlink" title="扩展中国剩余定理(EXCRT)"></a>扩展中国剩余定理(EXCRT)</h1><p>求同余方程组：</p>
+<script type="math/tex; mode=display">
+\left \{ \begin{matrix}
+x ≡ a_1 \pmod {m_1} \\
+x ≡ a_2 \pmod {m_2} \\
+\cdots \\
+x ≡ a_r \pmod {m_r} \\
+\end{matrix}\right.</script><p>这里不介绍中国剩余定理，因为扩展中国剩余定理的功能完全包含它。</p>
 <p>我们一个一个方程按顺序来解，每一次都利用上一次的解。假设我们已经求出前$i-1$个方程的解$ans$。设$M=\prod\limits_{j=1}^{i-1}m_j$，显然$ans+k \ast M$都满足前$i-1$个方程。我们要让它满足第$i$个方程，等价于</p>
-<p>$$ans+k \ast M \equiv a_i \pmod {m_i}$$</p>
-<p>我们用$exgcd$求出$k$，带入更新$M$和$ans$即可。如果此同余方程无解，则代表整个问题无解。</p>
+<script type="math/tex; mode=display">ans+k \ast M \equiv a_i \pmod {m_i}</script><p>我们用$exgcd$求出$k$，带入更新$M$和$ans$即可。如果此同余方程无解，则代表整个问题无解。</p>
 <p>复杂度$O(n \log m)$。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">EXCRT</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans=a[<span class="number">1</span>],M=m[<span class="number">1</span>],g,x,y,c;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        c = (a[i]-ans%m[i]+m[i])%m[i];</span><br><span class="line">        exgcd(M,m[i],g,x,y);</span><br><span class="line">        <span class="keyword">if</span>(c%g != <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        x = qmul(x,c/g,m[i]);</span><br><span class="line">        ans += x*M;</span><br><span class="line">        M *= m[i]/g;</span><br><span class="line">        ans = (ans+M)%M;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
