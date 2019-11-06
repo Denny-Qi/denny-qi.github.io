@@ -332,7 +332,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">SieveMu</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!b[i])&#123;</span><br><span class="line">            prm[++tot] = i;</span><br><span class="line">            mu[i] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot &amp;&amp; i*prm[j] &lt;= n; ++j)&#123;</span><br><span class="line">            b[i*prm[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i % prm[j] == <span class="number">0</span>)&#123;</span><br><span class="line">                mu[i*prm[j]] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                mu[i*prm[j]] = -mu[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="莫比乌斯反演"><a href="#莫比乌斯反演" class="headerlink" title="莫比乌斯反演"></a>莫比乌斯反演</h2><p>根据莫比乌斯函数的定义，我们发现莫比乌斯函数具有如下的反演原理。</p>
 <h3 id="公式-1"><a href="#公式-1" class="headerlink" title="公式 1"></a>公式 1</h3><script type="math/tex; mode=display">F(n)=\sum\limits_{d|n}f(d) \xrightarrow[]{反演} f(n)=\sum\limits_{d|n}\mu(d)F(\dfrac{n}{d}) \tag{1.4}</script><h3 id="公式-2"><a href="#公式-2" class="headerlink" title="公式 2"></a>公式 2</h3><script type="math/tex; mode=display">F(n)=\sum\limits_{n|d}f(d) \xrightarrow[]{反演} f(n)=\sum\limits_{n|d}\mu(\dfrac{d}{n})F(d) \tag{1.5}</script><h2 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h2><blockquote>
-<p>求$\sum\limits<em>{i=1}^{n}\sum\limits</em>{j=1}^{m }[gcd(i,j) = k], (n &lt; m ) $</p>
+<p>求$\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m }[gcd(i,j) = k], (n &lt; m ) $</p>
 </blockquote>
 <p>直接通过定义来变形：</p>
 <script type="math/tex; mode=display">
@@ -345,7 +345,7 @@
 <script type="math/tex; mode=display">\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m }[gcd(i,j) = k]=\sum\limits_{i=1}^{n}\mu(i)\left \lfloor \frac{n}{ik} \right \rfloor\left \lfloor \frac{m}{ik} \right \rfloor \tag{1.6}</script><p>可以使用整除分块$O(\sqrt{n})$求解。</p>
 <p>这里我们进行恒等式变换时，用到了$gcd$消下标，枚举$gcd$换$\sum$等，都是非常常用的。</p>
 <h2 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h2><blockquote>
-<p>求$\sum\limits<em>{i=1}^{n}\sum\limits</em>{j=1}^{m}gcd(i,j)，(n&lt;m)$</p>
+<p>求$\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m}gcd(i,j)，(n&lt;m)$</p>
 </blockquote>
 <script type="math/tex; mode=display">
 \begin{aligned}
@@ -366,7 +366,7 @@
 <script type="math/tex; mode=display">\varphi(n) = \sum\limits_{i=1}^{n-1}[gcd(n,i)=1] \tag{2.1}</script><p>其中特殊定义$\varphi(1)=1$</p>
 <p>常用的欧拉函数值：$\varphi(p)=p-1, \ \varphi(p^k)=p^k-p^{k-1}$</p>
 <p>其中，欧拉函数也是积性函数。满足$\varphi(nm)=\varphi(n)\varphi(m), \ n \perp m$，因此也可以通过线性筛求出。</p>
-<p>既然这样，那么将$n$分解质因数得到$n=\prod\limits<em>{i}p</em>{i}^{k<em>i}$，则有$\varphi(n)=\prod\limits</em>{i}\varphi(p_i^{k_i})$。</p>
+<p>既然这样，那么将$n$分解质因数得到$n=\prod\limits_{i}p_{i}^{k_i}$，则有$\varphi(n)=\prod\limits_{i}\varphi(p_i^{k_i})$。</p>
 <p>于是就得出了$\varphi$的通项公式：</p>
 <script type="math/tex; mode=display">\varphi(n)=\prod\limits_{i}(p_i^{k_i}-p_i^{k^{i-1}})=n \prod\limits_{i}(1-{1 \over p_i}) \tag{2.2}</script><h2 id="欧拉函数的性质"><a href="#欧拉函数的性质" class="headerlink" title="欧拉函数的性质"></a>欧拉函数的性质</h2><script type="math/tex; mode=display">\sum\limits_{d|n}\varphi(d)=n \tag{2.4}</script><p>这个性质非常巧妙。这其实是一个真分数约分的过程。</p>
 <script type="math/tex; mode=display">\frac{0}{12},\frac{1}{12},\frac{2}{12},\frac{3}{12},\frac{4}{12},\frac{5}{12},\frac{6}{12},\frac{7}{12},\frac{8}{12},\frac{9}{12},\frac{10}{12},\frac{11}{12}</script><p>约分后交换顺序得到</p>

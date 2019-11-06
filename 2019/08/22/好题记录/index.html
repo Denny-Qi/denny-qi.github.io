@@ -311,12 +311,12 @@
 <p>而点权相等就可能有环，不过环内点先后是无所谓的。</p>
 <p>因此枚举每条边即可求出答案，复杂度$O(m)$。为什么数据范围出那么小= =。</p>
 <h2 id="Codeforces-1165-E-Two-Arrays-and-Sum-of-Functions"><a href="#Codeforces-1165-E-Two-Arrays-and-Sum-of-Functions" class="headerlink" title="Codeforces 1165 E. Two Arrays and Sum of Functions"></a>Codeforces 1165 E. Two Arrays and Sum of Functions</h2><blockquote>
-<p>给出两个长度为$n$的序列$a$和$b$，定义$f(l,r)=\sum\limits<em>{i=l}^ra_ib_i$。现在可以给序列$b$中的元素指定任意顺序，问怎样指定$b$的顺序能让$\sum\limits</em>{1 \leq l \leq r \leq n}f(l,r)$最小。</p>
+<p>给出两个长度为$n$的序列$a$和$b$，定义$f(l,r)=\sum\limits_{i=l}^ra_ib_i$。现在可以给序列$b$中的元素指定任意顺序，问怎样指定$b$的顺序能让$\sum\limits_{1 \leq l \leq r \leq n}f(l,r)$最小。</p>
 <p>$n \leq 2 \cdot 10^5$。</p>
 </blockquote>
 <p>我们考虑对于每一个位置$i$，$a_i \cdot b_i$会被统计$i(n-i+1)$次。</p>
 <p>因此答案可以用这种形式来表示：</p>
-<script type="math/tex; mode=display">\sum\limits_{i=1}^na_ib_i \times i(n-i+1)</script><p>这个式子中除了$b<em>i$之外都是只与$i$有关的定值，因此考虑设一个$c_i=a_i \times i(n-i+1)$，答案转化为求$\sum\limits</em>{i=1}^nb_i  c_i$的最小值。</p>
+<script type="math/tex; mode=display">\sum\limits_{i=1}^na_ib_i \times i(n-i+1)</script><p>这个式子中除了$b_i$之外都是只与$i$有关的定值，因此考虑设一个$c_i=a_i \times i(n-i+1)$，答案转化为求$\sum\limits_{i=1}^nb_i  c_i$的最小值。</p>
 <p>这个问题也就是给你两个序列$a,b$，问怎么给<strong>它们</strong>排列顺序能使$\sum\limits_{i=1}^{n}a_ib_i$最小。</p>
 <p>关于两个序列两两相乘之和最小，有一个贪心的结论：<strong>将$a$从小到大排序，将$b$从大到小排序，$a_i$配对$b_i$，这样一定使答案最小</strong>。</p>
 <p>证明：</p>
@@ -352,8 +352,8 @@
 <p>有$n$个人，第$i$个人有$a_i$的概率同意，$1-a_i$的概率不同意。请从这些人中选择一些人，使得其中只有一人同意的概率最大。问最大概率。</p>
 <p>$n \leq 100$。</p>
 </blockquote>
-<p>假设我们已经选择了一个集合$S$，则概率为$\sum\limits<em>{i \in S}\left (a_i \dfrac{\prod\limits</em>{j \in S}(1-a_j)}{1-a_i} \right)$。</p>
-<p>令$A=\prod\limits<em>{i \in S}(1-a_i)$，$B=\sum\limits</em>{i \in S}\dfrac{a_i}{1-a_i}$。则概率为$AB$。</p>
+<p>假设我们已经选择了一个集合$S$，则概率为$\sum\limits_{i \in S}\left (a_i \dfrac{\prod\limits_{j \in S}(1-a_j)}{1-a_i} \right)$。</p>
+<p>令$A=\prod\limits_{i \in S}(1-a_i)$，$B=\sum\limits_{i \in S}\dfrac{a_i}{1-a_i}$。则概率为$AB$。</p>
 <p><strong>考虑加入一个$a_k$后答案的变化量</strong></p>
 <p>$\Delta=(B+\dfrac{a_k}{1-a_k}) \cdot A \cdot (1-a_k)-SB=A(1-B)a_k$。因此只要满足$1-B&gt;0$，那么选择$a_k$就能使答案变大。贪心地，我们从大到小选择$a_k$，直到$B \geq 1$为止。</p>
 <p>复杂度$O(n \log n)$。</p>
@@ -400,7 +400,7 @@
 <p>根据题意分析，要对一个点进行操作的话必须对它的所有祖先进行相同的操作。而既然这样，想让一个点的点权归零进行操作，那之前就必须已经完成所有其后代的归零操作（因为如果后代没有归零，以后再去操作后代就必定会影响祖先使得决策不优）。而这样就将问题分解为子树上的子问题了。</p>
 <p>我们记录$up_i$与$down_i$表示子树$i$归零所需要的+1与-1的最少操作次数。子树与子树之间可以通过根节点一并操作。这样根节点的权值在操作子树时至少会变化$\max{up_v}-\max{down_v}$，之后再让根节点归零再进行$|v_u+\max{up_v}-\max{down_v}|$次操作。</p>
 <h1 id="2019-8"><a href="#2019-8" class="headerlink" title="2019.8"></a>2019.8</h1><h2 id="Codeforces-295-E-Yaroslav-and-Points"><a href="#Codeforces-295-E-Yaroslav-and-Points" class="headerlink" title="Codeforces 295 E. Yaroslav and Points"></a>Codeforces 295 E. Yaroslav and Points</h2><blockquote>
-<p>给出一个序列$a<em>i$，（$|a_i| \leq 10^9$），单点修改。询问给出$l,r$，求$\sum\limits</em>{i=l}^{r}\sum\limits_{j=i}^{r}(x_j-x_i)$</p>
+<p>给出一个序列$a_i$，（$|a_i| \leq 10^9$），单点修改。询问给出$l,r$，求$\sum\limits_{i=l}^{r}\sum\limits_{j=i}^{r}(x_j-x_i)$</p>
 </blockquote>
 <p>按照权值建线段树（动态开点或离散化），接下来询问的可以看做线段上两两之间的距离之和。分治求解可以得出两边内部两两的距离，于是只需要计算出所有跨越两边的点之间的距离之和就可以了。既然这样，就可以通过维护区间和以及区间点个数求解了。</p>
 <h2 id="洛谷5154-数列游戏"><a href="#洛谷5154-数列游戏" class="headerlink" title="洛谷5154 数列游戏"></a>洛谷5154 数列游戏</h2><blockquote>
@@ -431,7 +431,7 @@
 </blockquote>
 <p>每一次合并字符串就需要更新，因此暴力$KMP$的复杂度退化为了$O(n^2)$。</p>
 <p>考虑字符串哈希，每次在第二个串中从大到小枚举长度，并在第一个串中截取后缀判断哈希值是否相等。</p>
-<p>$hash{s<em>{l..r}}=a_r-a</em>{l-1} \cdot base^{r-l+1}$。</p>
+<p>$hash{s_{l..r}}=a_r-a_{l-1} \cdot base^{r-l+1}$。</p>
 <h2 id="Codeforces-372-D-Choosing-Subtree-is-Fun"><a href="#Codeforces-372-D-Choosing-Subtree-is-Fun" class="headerlink" title="Codeforces 372 D. Choosing Subtree is Fun"></a>Codeforces 372 D. Choosing Subtree is Fun</h2><blockquote>
 <p>给出一颗树。定义区间$[l,r]$的权值为包含所有标号$ \in [l,r]$的点的连通块最小点数。问权值$\leq k$的区间最大长度。$n \leq 10^5$</p>
 </blockquote>
@@ -450,7 +450,7 @@
 <p>这是一个结论：一个序列不能单栈排序，当且仅当存在$i&lt;j&lt;k$使得$a_k&lt;a_i&lt;a_j$。通过维护最小值，求解的复杂度是$O(n^2)$的。</p>
 <p>这就给了我们判断两个元素能否在同一栈内的条件。那么能否双栈排序即判定二分图。然后贪心模拟即可。</p>
 <h2 id="Codeforces-319-B-Psychos-in-a-Line"><a href="#Codeforces-319-B-Psychos-in-a-Line" class="headerlink" title="Codeforces 319 B. Psychos in a Line"></a>Codeforces 319 B. Psychos in a Line</h2><blockquote>
-<p>给出$n$个人，每个人有一个攻击力$a<em>i$。每一轮对于第$i$个人，如果$a_i &gt; a</em>{i+1}$，那么$i$就可以杀掉$i+1$。问最少几轮能杀到不能杀。$n \leq 10^5$。</p>
+<p>给出$n$个人，每个人有一个攻击力$a_i$。每一轮对于第$i$个人，如果$a_i &gt; a_{i+1}$，那么$i$就可以杀掉$i+1$。问最少几轮能杀到不能杀。$n \leq 10^5$。</p>
 </blockquote>
 <p>这个问题整体考虑比较复杂，可以考虑对于每一个个体来分析它被杀的条件。关键在于，只有相邻才可以杀。因此$i$要被杀，它之前所以比它小的必须死完。定义$f_i$为$i$第几轮死，那么$f_i = \max{f_j}+1$。用单调栈来维护是$O(n)$。</p>
 <p>单调栈的优化在于，我可以不用重复统计之前一定比我小的数。在这道题中，我们将一整段比$i$小的信息都存到了$f_i$中，就避免了重复计算。</p>

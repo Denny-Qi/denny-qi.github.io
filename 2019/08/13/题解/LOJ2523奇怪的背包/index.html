@@ -297,8 +297,8 @@
 <p>$n,q \leq 10^6,P \leq 10^9$</p>
 <a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>考虑只有一种物品，背包的最终重量有哪些取值？也就是问$ax \% b$的值域。而这等价于$ax+by$的值域。由裴蜀定理可得$ax+by=c$有解当且仅当$gcd(a,b)|c$。因此$kv \% P$的取值一定是$gcd(v,P)$的倍数。</p>
-<p>这个定理可以推广到$n$项的不定方程——$n$个物品$(\sum\limits<em>{i}^{n}k_iv_i) \% P$的值一定是$gcd(v_1,v_2,\cdots,v_n,P)$的倍数（$k_i &gt; 0$）。询问$(\sum\limits</em>{i}^{n}k_iv_i) \% P=w$的方案数，也就是问在所有物品中，有多少个子集满足$gcd(v_1,v_2,\cdots,v_n,P)|w$。我们令$v’_i=gcd(v_i,P)$，那么问题等价于$gcd(v’_1,\cdots,v’_n)|w$。</p>
-<p>考虑动态规划，$dp<em>{i,j}$表示前$i$个$v’_i$中$gcd$起来为$j$的子集个数，可以用刷表法：$$dp</em>{i,k}=\sum dp_{i-1,j} \ast [gcd(j,v’_i)==k]$$</p>
+<p>这个定理可以推广到$n$项的不定方程——$n$个物品$(\sum\limits_{i}^{n}k_iv_i) \% P$的值一定是$gcd(v_1,v_2,\cdots,v_n,P)$的倍数（$k_i &gt; 0$）。询问$(\sum\limits_{i}^{n}k_iv_i) \% P=w$的方案数，也就是问在所有物品中，有多少个子集满足$gcd(v_1,v_2,\cdots,v_n,P)|w$。我们令$v’_i=gcd(v_i,P)$，那么问题等价于$gcd(v’_1,\cdots,v’_n)|w$。</p>
+<p>考虑动态规划，$dp_{i,j}$表示前$i$个$v’_i$中$gcd$起来为$j$的子集个数，可以用刷表法：<script type="math/tex">dp_{i,k}=\sum dp_{i-1,j} \ast [gcd(j,v'_i)==k]</script></p>
 <p>这样的复杂度是$O(nP)$的，显然无法通过。</p>
 <p>我们发现$v’_i$一定是$P$的约数，而$P$的约数个数是$10^3$级别的。因此我们<strong>离散化约数</strong>来$dp$。并且因为$v’_i$是全部都是$P$的约数，那么只有当$j$为$P$的约数时状态才可能可行。因此$dp$的两维都可以转化为约数的编号了。</p>
 <p>此时因为现在一个$v’$可能对应原来的多个$v$，因此要记录每一个$v’$原来的出现次数。选择当前物品的转移方程是</p>

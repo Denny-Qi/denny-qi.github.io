@@ -297,7 +297,7 @@
 <p>$1 \leq k \leq 5,1 \leq n,q \leq 2 \cdot 10^5$</p>
 <a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>这是一道非常经典的题。</p>
-<p>对于两个点$A,B$，设他们的坐标分别为$a<em>{1..k},b</em>{1..k}$，那么他们之间的曼哈顿距离表达式为：</p>
+<p>对于两个点$A,B$，设他们的坐标分别为$a_{1..k},b_{1..k}$，那么他们之间的曼哈顿距离表达式为：</p>
 <script type="math/tex; mode=display">dis=\sum\limits_{i=1}^{k}|a_i-b_i|</script><p>绝对值需要分类讨论，是不好计算的。而<strong>绝对值的实质是求最值</strong>，即</p>
 <script type="math/tex; mode=display">|x|=\max\{x,-x\}</script><p>有一个很显然却很重要的不等式成立：</p>
 <script type="math/tex; mode=display">|a_i-b_i| \geq a_i-b_i</script><p>那么就有</p>
